@@ -325,60 +325,65 @@ export const Bot = (props: BotProps & { class?: string }) => {
         return newSourceDocuments
     }
 
+
     return (
         <>
             <div ref={botContainer} class={'relative flex w-full h-full text-base overflow-hidden bg-cover bg-center flex-col items-center chatbot-container ' + props.class}>
                 <div class="flex w-full h-full justify-center">
                     <div style={{ "padding-bottom": '100px' }} ref={chatContainer} class="overflow-y-scroll min-w-full w-full min-h-full px-3 pt-10 relative scrollable-container chatbot-chat-view scroll-smooth">
                         <For each={[...messages()]}>
-                            {(message, index) => (
-                                <>
-                                    {message.type === 'userMessage' && (
-                                        <GuestBubble
-                                            message={message.message}
-                                            backgroundColor={props.userMessage?.backgroundColor}
-                                            textColor={props.userMessage?.textColor}
-                                            showAvatar={props.userMessage?.showAvatar}
-                                            avatarSrc={props.userMessage?.avatarSrc}
-                                        />
-                                    )}
-                                    {message.type === 'apiMessage' && (
-                                        <BotBubble
-                                            message={message.message}
-                                            backgroundColor={props.botMessage?.backgroundColor}
-                                            textColor={props.botMessage?.textColor}
-                                            showAvatar={props.botMessage?.showAvatar}
-                                            avatarSrc={props.botMessage?.avatarSrc}
-                                        />
-                                    )}
-                                    {message.type === 'userMessage' && loading() && index() === messages().length - 1 && (
-                                        <LoadingBubble />
-                                    )}
-                                    {message.sourceDocuments && message.sourceDocuments.length &&
-                                        <div style={{ display: 'flex', "flex-direction": 'row', width: '100%' }}>
-                                            <For each={[...removeDuplicateURL(message)]}>
-                                                {(src) => {
-                                                    const URL = isValidURL(src.metadata.source)
-                                                    return (
-                                                        <SourceBubble
-                                                            pageContent={URL ? URL.pathname : src.pageContent}
-                                                            metadata={src.metadata}
-                                                            onSourceClick={() => {
-                                                                if (URL) {
-                                                                    window.open(src.metadata.source, '_blank')
-                                                                }
-                                                                else {
-                                                                    setSourcePopupSrc(src);
-                                                                    setSourcePopupOpen(true);
-                                                                }
-                                                            }}
-                                                        />
-                                                    )
-                                                }}
-                                            </For>
-                                        </div>}
-                                </>
-                            )}
+                            {(message, index) => {
+                                console.log({message})
+                                return (
+                                    <>
+                                    {/* {message.} */}
+                                        {message.type === 'userMessage' && (
+                                            <GuestBubble
+                                                message={message.message}
+                                                backgroundColor={props.userMessage?.backgroundColor}
+                                                textColor={props.userMessage?.textColor}
+                                                showAvatar={props.userMessage?.showAvatar}
+                                                avatarSrc={props.userMessage?.avatarSrc}
+                                            />
+                                        )}
+                                        {message.type === 'apiMessage' && (
+                                            <BotBubble
+                                                message={message.message}
+                                                backgroundColor={props.botMessage?.backgroundColor}
+                                                textColor={props.botMessage?.textColor}
+                                                showAvatar={props.botMessage?.showAvatar}
+                                                avatarSrc={props.botMessage?.avatarSrc}
+                                            />
+                                        )}
+                                        {message.type === 'userMessage' && loading() && index() === messages().length - 1 && (
+                                            <LoadingBubble />
+                                        )}
+                                        {message.sourceDocuments && message.sourceDocuments.length &&
+                                            <div style={{ display: 'flex', "flex-direction": 'row', width: '100%' }}>
+                                                <For each={[...removeDuplicateURL(message)]}>
+                                                    {(src) => {
+                                                        const URL = isValidURL(src.metadata.source)
+                                                        return (
+                                                            <SourceBubble
+                                                                pageContent={URL ? URL.pathname : src.pageContent}
+                                                                metadata={src.metadata}
+                                                                onSourceClick={() => {
+                                                                    if (URL) {
+                                                                        window.open(src.metadata.source, '_blank')
+                                                                    }
+                                                                    else {
+                                                                        setSourcePopupSrc(src);
+                                                                        setSourcePopupOpen(true);
+                                                                    }
+                                                                }}
+                                                            />
+                                                        )
+                                                    }}
+                                                </For>
+                                            </div>}
+                                    </>
+                                )
+                            }}
                         </For>
                     </div>
                     <TextInput
