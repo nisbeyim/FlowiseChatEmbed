@@ -51,7 +51,7 @@ export const Badge = (props: Props) => {
       "text-align": 'center',
       color: props.poweredByTextColor ?? defaultTextColor,
       "background-color": props.badgeBackgroundColor ?? '#ffffff'
-    }}>Powered by
+    }}>Powered by{' '}
       <a
         ref={liteBadge}
         href={'https://app.beyim.ai/'}
@@ -61,7 +61,7 @@ export const Badge = (props: Props) => {
         id="lite-badge"
         style={{ "font-weight": 'bold', color: props.poweredByTextColor ?? defaultTextColor }}
       >
-        <span> Beyim</span>
+        <span>Beyim NIS</span>
       </a>
     </span>
   )

@@ -333,7 +333,8 @@ export const Bot = (props: BotProps & { class?: string }) => {
                     <div style={{ "padding-bottom": '100px' }} ref={chatContainer} class="overflow-y-scroll min-w-full w-full min-h-full px-3 pt-10 relative scrollable-container chatbot-chat-view scroll-smooth">
                         <For each={[...messages()]}>
                             {(message, index) => {
-                                console.log({message})
+                                const isNotFoundMessage = message.message.includes('not found')
+                                const notFoundMessageCustom = 'Извините, у нас ведутся технические работы. AI учитель скоро возобновит работу...'
                                 return (
                                     <>
                                     {/* {message.} */}
@@ -348,7 +349,7 @@ export const Bot = (props: BotProps & { class?: string }) => {
                                         )}
                                         {message.type === 'apiMessage' && (
                                             <BotBubble
-                                                message={message.message}
+                                                message={isNotFoundMessage ?notFoundMessageCustom :message.message}
                                                 backgroundColor={props.botMessage?.backgroundColor}
                                                 textColor={props.botMessage?.textColor}
                                                 showAvatar={props.botMessage?.showAvatar}
