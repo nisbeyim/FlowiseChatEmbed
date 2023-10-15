@@ -16,6 +16,7 @@ export const sendRequest = async <ResponseData>(
         | string
 ): Promise<{ data?: ResponseData; error?: Error }> => {
     try {
+        console.log(111,'trying to fetch')
         const url = typeof params === 'string' ? params : params.url
         const response = await fetch(url, {
             method: typeof params === 'string' ? 'GET' : params.method,
@@ -32,10 +33,15 @@ export const sendRequest = async <ResponseData>(
         const contentType = response.headers.get('Content-Type')
         if (contentType && contentType.includes('application/json')) {
             data = await response.json()
+        console.log(112,{data})
+
         } else {
+        console.log(113,{data})
+
             data = await response.text()
         }
         if (!response.ok) {
+            
             let errorMessage
 
             if (typeof data === 'object' && 'error' in data) {
@@ -44,11 +50,16 @@ export const sendRequest = async <ResponseData>(
                 errorMessage = data || response.statusText
             }
 
+        console.log(114,{errorMessage})
+
             throw errorMessage
         }
+        console.log(111,{data})
 
         return { data }
     } catch (e) {
+        console.log(111,'failed to fetch')
+
         console.error(e)
         return { error: e as Error }
     }
