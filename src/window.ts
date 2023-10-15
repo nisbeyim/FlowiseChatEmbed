@@ -9,7 +9,7 @@ export const initFull = (props: BotProps & { id?: string }) => {
     const fullElement = props.id
       ? document.getElementById(props.id)
       : document.querySelector('flowise-fullchatbot')
-    if (!fullElement) throw new Error('<flowise-fullchatbot> element not found.')
+    if (!fullElement) throw new Error('Извините, у нас ведутся технические работы. AI учитель скоро возобновит работу...')
     Object.assign(fullElement, props)
 }
 
