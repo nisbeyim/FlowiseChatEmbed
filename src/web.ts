@@ -12,7 +12,7 @@ import fetchIntercept from 'fetch-intercept';
 const unregister = fetchIntercept.register({
     request: function (url: any, config: any) {
         //@ts-ignore
-        if(url.includes(window.getBotUri)) {
+        if(url.includes(window.getBotUri())) {
             const headers = config?.headers ?? {};
             //@ts-ignore
             headers.Authorization = window.getAuthentication();
