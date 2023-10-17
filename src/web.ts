@@ -4,25 +4,28 @@ import { parseChatbot, injectChatbotInWindow } from './window'
 /** Aybjax interceptor */
 import fetchIntercept from 'fetch-intercept';
 
-//@ts-ignore
-// window.getAuthentication = () => "Bearer key"
-//@ts-ignore
-// window.getBotUri = '10.25.1.50:3000'
+const isBotUri = (url: string): boolean => ['10.25.1.50:3000', 'ne znayu: dopishi'].some(backendUrl => {
+        return url.includes(backendUrl)
+    });
 
 const unregister = fetchIntercept.register({
     request: function (url: any, config: any) {
+        if(! isBotUri(url)) return [url, config];
+        console.log('[chatbot front]: URL is defined')
+
+        const accessToken = document.cookie.split('; ').find(c => c.includes('accessToken'))?.split('=') ?? []
+
+        if(accessToken.length != 2) return [url, config];
+
+        const headers = config?.headers ?? {};
         //@ts-ignore
-        if(url.includes(window.getBotUri())) {
-            const headers = config?.headers ?? {};
-            //@ts-ignore
-            headers.Authorization = window.getAuthentication();
+        headers.Authorization = `Bearer ${accessToken[1]}`;
 
-            if(!config) {
-                config = {};
-            }
-
-            config.headers = headers;
+        if(!config) {
+            config = {};
         }
+
+        config.headers = headers;
 
         // Modify the url or config here
         return [url, config];
