@@ -27,6 +27,19 @@ class AybjaxData {
         ru?: string;
         en?: string;
     } = {}
+
+    getWelcome(lang_code: 'kk'|'en'|'ru'): string {
+        switch (lang_code) {
+            case 'kk':
+                return this.welcome_message.kk ?? ''
+            case 'en':
+                return this.welcome_message.en ?? ''
+            case 'ru':
+                return this.welcome_message.ru ?? ''
+            default:
+                return ''
+        }
+    }
 }
 
 type Chatbot = {
