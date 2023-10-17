@@ -19,9 +19,20 @@ export const init = (props: BotProps) => {
     document.body.appendChild(element)
 }
 
+class AybjaxData {
+    avatar_url: string = '';
+    avatar_icon: string = '';
+    welcome_message: {
+        kk?: string;
+        ru?: string;
+        en?: string;
+    } = {}
+}
+
 type Chatbot = {
     initFull: typeof initFull
-    init: typeof init
+    init: typeof init,
+    data?: AybjaxData;
 }
 
 declare const window:
@@ -32,7 +43,8 @@ declare const window:
 
 export const parseChatbot = () => ({
     initFull,
-    init
+    init,
+    data: new AybjaxData,
 })
 
 export const injectChatbotInWindow = (bot: Chatbot) => {

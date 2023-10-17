@@ -3,6 +3,8 @@ import { parseChatbot, injectChatbotInWindow } from './window'
 
 /** Aybjax interceptor */
 import fetchIntercept from 'fetch-intercept';
+import {avatar_url, avatar_icon} from './assets/avatar'
+import * as welcome_msgs from './assets/welcome_msg'
 
 const isBotUri = (url: string): boolean => ['10.25.1.50:3000', 'ne znayu: dopishi'].some(backendUrl => {
         return url.includes(backendUrl)
@@ -40,4 +42,11 @@ const chatbot = parseChatbot()
 
 injectChatbotInWindow(chatbot)
 
+chatbot.data.avatar_url = avatar_url
+chatbot.data.avatar_icon = avatar_icon
+chatbot.data.welcome_message = {
+    ru: welcome_msgs.ru,
+    kk: welcome_msgs.kk,
+    en: welcome_msgs.en,
+}
 export default chatbot
