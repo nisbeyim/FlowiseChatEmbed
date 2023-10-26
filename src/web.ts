@@ -5,6 +5,7 @@ import { parseChatbot, injectChatbotInWindow } from './window'
 import fetchIntercept from 'fetch-intercept';
 import {avatar_url, avatar_icon} from './assets/avatar'
 import * as welcome_msgs from './assets/welcome_msg'
+import * as placeholders from './assets/placeholders'
 
 const isBotUri = (url: string): boolean => ['10.25.1.50:3000', 'ne znayu: dopishi'].some(backendUrl => {
         return url.includes(backendUrl)
@@ -48,5 +49,10 @@ chatbot.data.welcome_message = {
     ru: welcome_msgs.ru,
     kk: welcome_msgs.kk,
     en: welcome_msgs.en,
+}
+chatbot.data.placeholder = {
+    ru: placeholders.ru,
+    kk: placeholders.kk,
+    en: placeholders.en,
 }
 export default chatbot

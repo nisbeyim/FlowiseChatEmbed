@@ -27,6 +27,11 @@ class AybjaxData {
         ru?: string;
         en?: string;
     } = {}
+    placeholder: {
+        kk?: string;
+        ru?: string;
+        en?: string;
+    } = {}
 }
 
 type Chatbot = {
