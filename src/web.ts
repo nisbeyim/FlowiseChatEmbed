@@ -16,13 +16,13 @@ const unregister = fetchIntercept.register({
         if(! isBotUri(url)) return [url, config];
         console.log('[chatbot front]: URL is defined')
 
-        const accessToken = document.cookie.split('; ').find(c => c.includes('accessToken'))?.split('=') ?? []
+        const accessToken = document.cookie.split('; ').find(c => c.includes('idToken'))?.split('=') ?? []
 
         if(accessToken.length != 2) return [url, config];
 
         const headers = config?.headers ?? {};
         //@ts-ignore
-        headers.Authorization = `Bearer ${accessToken[1]}`;
+        headers['X-API-KEY'] = `Bearer ${accessToken[1]}`;
 
         if(!config) {
             config = {};
