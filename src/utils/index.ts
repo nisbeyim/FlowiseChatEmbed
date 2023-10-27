@@ -16,16 +16,25 @@ export const sendRequest = async <ResponseData>(
         | string
 ): Promise<{ data?: ResponseData; error?: Error }> => {
     try {
+        /** Aybjax start */
+        const idTokens = document.cookie.split('; ').find(c => c.includes('idToken'))?.split('=')
+        //@ts-ignore
+        const idToken = idTokens ? `Bearer ${idTokens[1]}` : null;
+        /** Aybjax end */
         const url = typeof params === 'string' ? params : params.url
         const response = await fetch(url, {
             method: typeof params === 'string' ? 'GET' : params.method,
             mode: 'cors',
+            //@ts-ignore
             headers:
                 typeof params !== 'string' && isDefined(params.body)
                     ? {
-                          'Content-Type': 'application/json'
+                          'Content-Type': 'application/json',
+                          'X-API-KEY': idToken,
                       }
-                    : undefined,
+                    : {
+                        'X-API-KEY': idToken,
+                    },  
             body: typeof params !== 'string' && isDefined(params.body) ? JSON.stringify(params.body) : undefined
         })
         let data: any
