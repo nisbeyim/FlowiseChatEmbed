@@ -6,36 +6,6 @@ import { parseChatbot, injectChatbotInWindow } from './window'
 import {avatar_url, avatar_icon} from './assets/avatar';
 import * as welcome_msgs from './assets/welcome_msg';
 import * as placeholders from './assets/placeholders';
- 
-// const isBotUri = (url: string): boolean => ['10.25.1.50:3000', 'ne znayu: dopishi'].some(backendUrl => {
-//         return url.includes(backendUrl)
-//     });
- 
-// const unregister = fetchIntercept.register({
-//     request: function (url: any, config: any) {
-//         if(! isBotUri(url)) return [url, config];
-//         console.log('[chatbot front]: URL is defined')
- 
-//         const accessToken = document.cookie.split('; ').find(c => c.includes('idToken'))?.split('=') ?? []
- 
-//         if(accessToken.length != 2) return [url, config];
- 
-//         const headers = config?.headers ?? {};
-//         //@ts-ignore
-//         headers['X-API-KEY'] = `Bearer ${accessToken[1]}`;
- 
-//         if(!config) {
-//             config = {};
-//         }
- 
-//         config.headers = headers;
- 
-//         // Modify the url or config here
-//         return [url, config];
-//     },
-// });
- 
-/** Aybjax interceptor end */
 
 registerWebComponents()
 
