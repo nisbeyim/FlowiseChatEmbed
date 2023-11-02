@@ -18,8 +18,10 @@ export const sendRequest = async <ResponseData>(
     try {
         /** Aybjax start */
         const idTokens = document.cookie.split('; ').find(c => c.includes('idToken'))?.split('=')
+        const accessTokens = document.cookie.split('; ').find(c => c.includes('token'))?.split('=')
         //@ts-ignore
         const idToken = idTokens ? `Bearer ${idTokens[1]}` : null;
+        const accessToken = accessTokens ? `Bearer ${accessTokens[1]}` : null;
         /** Aybjax end */
         const url = typeof params === 'string' ? params : params.url
         const response = await fetch(url, {
@@ -31,6 +33,7 @@ export const sendRequest = async <ResponseData>(
                     ? {
                           'Content-Type': 'application/json',
                           'X-API-KEY': idToken,
+                          'Authorization': accessToken
                       }
                     : {
                         'X-API-KEY': idToken,
