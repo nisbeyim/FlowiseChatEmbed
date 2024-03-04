@@ -335,6 +335,8 @@ export const Bot = (props: BotProps & { class?: string }) => {
                             {(message, index) => {
                                 const isNotFoundMessage = message.message.includes('not found')
                                 const notFoundMessageCustom = 'Извините, у нас ведутся технические работы. AI учитель скоро возобновит работу...'
+                                const isLmitTokenMessage = message.message.includes('org-fVVUI8U647cxUoL6Y3HXVCuT')
+                                const limitTokenMessage = 'Вы превысили количество символов.'
                                 return (
                                     <>
                                     {/* {message.} */}
@@ -349,7 +351,7 @@ export const Bot = (props: BotProps & { class?: string }) => {
                                         )}
                                         {message.type === 'apiMessage' && (
                                             <BotBubble
-                                                message={isNotFoundMessage ?notFoundMessageCustom :message.message}
+                                                message={isNotFoundMessage ? notFoundMessageCustom : (isLmitTokenMessage ? limitTokenMessage : message.message)}
                                                 backgroundColor={props.botMessage?.backgroundColor}
                                                 textColor={props.botMessage?.textColor}
                                                 showAvatar={props.botMessage?.showAvatar}

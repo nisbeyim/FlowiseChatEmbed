@@ -37,6 +37,7 @@ export const sendRequest = async <ResponseData>(
                       }
                     : {
                         'X-API-KEY': idToken,
+                        'Authorization': accessToken
                     },  
             body: typeof params !== 'string' && isDefined(params.body) ? JSON.stringify(params.body) : undefined
         })
