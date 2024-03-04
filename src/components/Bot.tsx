@@ -353,7 +353,7 @@ export const Bot = (props: BotProps & { class?: string }) => {
                                         )}
                                         {message.type === 'apiMessage' && (
                                             <BotBubble
-                                                message={isNotFoundMessage ? notFoundMessageCustom : (isLimitTokenMessage ? limitTokenMessage : (isLimitContextMessage ? limitContextMessage : message.message))}
+                                                message={isNotFoundMessage ? notFoundMessageCustom : isLimitTokenMessage ? limitTokenMessage : isLimitContextMessage ? limitContextMessage : message.message}
                                                 backgroundColor={props.botMessage?.backgroundColor}
                                                 textColor={props.botMessage?.textColor}
                                                 showAvatar={props.botMessage?.showAvatar}
