@@ -15,3 +15,9 @@ export const en = `Greetings! I'm your AI teacher
 My unique ability is to quickly find information, answer questions and provide advice.
 
 What can I do for you?`
+
+export const ar = `تحياتي! أنا معلم الذكاء الاصطناعي الخاص بك
+
+قدرتي الفريدة هي العثور بسرعة على المعلومات والإجابة على الأسئلة وتقديم المشورة.
+
+ماذا يمكنني أن أفعل لك؟`

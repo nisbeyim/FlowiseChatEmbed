@@ -26,11 +26,13 @@ class AybjaxData {
         kk?: string;
         ru?: string;
         en?: string;
+        ar?: string;
     } = {}
     placeholder: {
         kk?: string;
         ru?: string;
         en?: string;
+        ar?: string;
     } = {}
 }
 

@@ -19,10 +19,12 @@ chatbot.data.welcome_message = {
     ru: welcome_msgs.ru,
     kk: welcome_msgs.kk,
     en: welcome_msgs.en,
+    ar: welcome_msgs.ar,
 }
 chatbot.data.placeholder = {
     ru: placeholders.ru,
     kk: placeholders.kk,
     en: placeholders.en,
+    ar: placeholders.ar,
 }
 export default chatbot
