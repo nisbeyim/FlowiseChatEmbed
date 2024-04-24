@@ -14,7 +14,6 @@ const defaultBackgroundColor = "#3B81F6";
 const defaultTextColor = "#ffffff";
 
 Marked.setOptions({ isNoP: true });
-console.log("Aybjax was here");
 
 export const GuestBubble = (props: Props) => {
   let userMessageEl: HTMLDivElement | undefined;

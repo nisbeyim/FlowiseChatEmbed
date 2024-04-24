@@ -439,7 +439,7 @@ export const Bot = (props: BotProps & { class?: string }) => {
                 Powered by Beyim NIS
               </span>
             </div>
-            <div class="px-3 mt-[53px] md: mt-[74px]">
+            <div class="px-3 mt-[53px] md:mt-[74px]">
               <For each={[...messages()]}>
                 {(message, index) => {
                   const isNotFoundMessage =
