@@ -379,6 +379,14 @@ export const Bot = (props: BotProps & { class?: string }) => {
       ? "AI Помощник"
       : locale === "ar"
       ? "AI مساعد"
+      : locale === "en-US"
+      ? "AI Assistant"
+      : locale === "en"
+      ? "AI Assistant"
+      : locale === "en-AE"
+      ? "AI Assistant"
+      : locale === "ar-AE"
+      ? "AI مساعد"
       : "AI Assistant";
   const [windowHeight, setWindowHeight] = createSignal(window.innerHeight);
   const [windowWidth, setWindowWidth] = createSignal(window.innerWidth);

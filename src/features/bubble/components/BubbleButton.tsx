@@ -87,6 +87,14 @@ export const BubbleButton = (props: Props) => {
       ? "AI Помощник"
       : locale === "ar"
       ? "AI مساعد"
+      : locale === "en-US"
+      ? "AI Assistant"
+      : locale === "en"
+      ? "AI Assistant"
+      : locale === "en-AE"
+      ? "AI Assistant"
+      : locale === "ar-AE"
+      ? "AI مساعد"
       : "AI Assistant";
 
   const isArabic = locale === "ar";
