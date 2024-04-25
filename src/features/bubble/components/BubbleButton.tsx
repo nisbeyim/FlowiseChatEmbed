@@ -79,14 +79,15 @@ export const BubbleButton = (props: Props) => {
   const buttenMenu = windowWidth() / 4 + windowWidth() / 10;
 
   const locale = localStorage.getItem("i18nextLng") ?? "kk";
+
   const name =
     locale === "kk"
       ? "AI Көмекші"
       : locale === "ru"
       ? "AI Помощник"
-      : locale === "en"
-      ? "AI Assistant"
-      : "AI مساعد";
+      : locale === "ar"
+      ? "AI مساعد"
+      : "AI Assistant";
 
   const isArabic = locale === "ar";
 

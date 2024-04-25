@@ -377,9 +377,9 @@ export const Bot = (props: BotProps & { class?: string }) => {
       ? "AI Көмекші"
       : locale === "ru"
       ? "AI Помощник"
-      : locale === "en"
-      ? "AI Assistant"
-      : "AI مساعد";
+      : locale === "ar"
+      ? "AI مساعد"
+      : "AI Assistant";
   const [windowHeight, setWindowHeight] = createSignal(window.innerHeight);
   const [windowWidth, setWindowWidth] = createSignal(window.innerWidth);
   window.addEventListener("resize", () => {
