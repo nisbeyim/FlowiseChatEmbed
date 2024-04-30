@@ -34,6 +34,26 @@ function useVisualViewportHeight() {
 
   return viewportHeight;
 }
+function useVisualViewportWidth() {
+  const [viewportHeight, setViewportHeight] = createSignal(0);
+
+  function handleResize() {
+    setViewportHeight(window?.visualViewport?.width || 0);
+  }
+
+  // Добавляем обработчик события изменения размеров окна просмотра
+  window?.visualViewport?.addEventListener("resize", handleResize);
+
+  // Вызываем обработчик сразу после подписки
+  handleResize();
+
+  // Отписываемся от обработчика при размонтировании компонента
+  onCleanup(() => {
+    window?.visualViewport?.removeEventListener("resize", handleResize);
+  });
+
+  return viewportHeight;
+}
 
 export const Bubble = (props: BubbleProps) => {
   const [bubbleProps] = splitProps(props, ["theme"]);
@@ -57,6 +77,8 @@ export const Bubble = (props: BubbleProps) => {
   const toggleBot = () => {
     isBotOpened() ? closeBot() : openBot();
   };
+  const locale = localStorage.getItem("i18nextLng") ?? "kk";
+  const isArabic = locale === "ar";
 
   const [windowHeight, setWindowHeight] = createSignal(window.innerHeight);
   const [windowWidth, setWindowWidth] = createSignal(window.innerWidth);
@@ -67,7 +89,7 @@ export const Bubble = (props: BubbleProps) => {
   const isLargeSize = windowWidth() > 768;
 
   const viewPort = useVisualViewportHeight();
-
+  const width = useVisualViewportWidth();
   return (
     <>
       <style>{styles}</style>
@@ -100,13 +122,19 @@ export const Bubble = (props: BubbleProps) => {
           "background-color":
             bubbleProps.theme?.chatWindow?.backgroundColor || "#ffffff",
           "z-index": 42424242,
+          // right: width() < 768 ? "0" : isArabic ? "auto" : "20px",
+          // left: width() < 768 ? "0" : isArabic ? "20px" : "auto",
         }}
         class={
-          `fixed sm:right-5 w-full sm:w-[400px]` +
+          `fixed  sm:right-5 w-full sm:w-[400px]` +
           (isBotOpened() ? " opacity-1" : " opacity-0 pointer-events-none") +
           (props.theme?.button?.size === "large" || isLargeSize
-            ? " bottom-[75px]"
+            ? !isArabic
+              ? " bottom-[165px]"
+              : " bottom-[90px]"
             : " bottom-[59px]")
+          // `${!isArabic ? "right-5" : "left-auto"}` +
+          // `${isArabic ? " right-5" : "left-auto"}`
         }
       >
         {/* <span>{viewPort()}</span> */}

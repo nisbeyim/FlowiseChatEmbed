@@ -10,8 +10,8 @@ type Props = ButtonTheme & {
 
 const defaultButtonColor = "#3B81F6";
 const defaultIconColor = "white";
-const defaultBottom = "20";
-const defaultRight = "20";
+const defaultBottom = "96";
+const defaultRight = "25";
 
 function useMediaQuery(query: any) {
   const [matches, setMatches] = createSignal(window.matchMedia(query).matches);
@@ -30,11 +30,14 @@ function useMediaQuery(query: any) {
   return matches;
 }
 
-function useVisualViewportWidth() {
+function useVisualViewportWidthEn() {
   const [viewportWidth, setViewPortWidth] = createSignal(0);
 
   function handleResize() {
-    setViewPortWidth(window?.visualViewport?.width || 0);
+    setViewPortWidth(
+      (window?.visualViewport?.width || 0) / 4 +
+        (window?.visualViewport?.width || 0) / 10 || 0
+    );
   }
 
   // Добавляем обработчик события изменения размеров окна просмотра
@@ -51,11 +54,14 @@ function useVisualViewportWidth() {
   return viewportWidth;
 }
 
-function useVisualViewportHeight() {
-  const [viewportHeight, setViewportHeight] = createSignal(0);
+function useVisualViewportWidthArabic() {
+  const [viewportWidth, setViewPortWidth] = createSignal(0);
 
   function handleResize() {
-    setViewportHeight(window?.visualViewport?.height || 0);
+    setViewPortWidth(
+      (2 * (window?.visualViewport?.width || 0)) / 4 +
+        (window?.visualViewport?.width || 0) / 10 || 0 - 7
+    );
   }
 
   // Добавляем обработчик события изменения размеров окна просмотра
@@ -69,14 +75,10 @@ function useVisualViewportHeight() {
     window?.visualViewport?.removeEventListener("resize", handleResize);
   });
 
-  return viewportHeight;
+  return viewportWidth;
 }
-
 export const BubbleButton = (props: Props) => {
-  const windowWidth = useVisualViewportWidth();
-  const windowHeight = useVisualViewportHeight();
-
-  const buttenMenu = windowWidth() / 4 + windowWidth() / 10;
+  const windowWidth = useVisualViewportWidthEn();
 
   const locale = localStorage.getItem("i18nextLng") ?? "kk";
 
@@ -99,7 +101,7 @@ export const BubbleButton = (props: Props) => {
 
   const isArabic = locale === "ar";
 
-  const buttonMenuArabic = (2 * windowWidth()) / 4 + windowWidth() / 10 - 4;
+  const buttonMenuArabic = useVisualViewportWidthArabic();
 
   const isLargeSize = useMediaQuery("(min-width: 768px)");
   let botRef: HTMLElement | null;
@@ -125,23 +127,29 @@ export const BubbleButton = (props: Props) => {
         <button
           part="button"
           onClick={() => props.toggleBot()}
-          class={`fixed shadow-md rounded-full  transition-transform duration-200 flex justify-center items-center animate-fade-in w-[50px] h-[50px]`}
+          class={`fixed rounded-full  transition-transform duration-200 flex justify-center items-center animate-fade-in w-[60px] h-[60px]`}
           style={{
             "background-color": props.backgroundColor ?? defaultButtonColor,
-            "z-index": 42424242,
+            "z-index": 100,
+            "box-shadow": "0 5px 4px 0 rgba(0, 0, 0, .26)",
+            "border-radius": "34px 8px 34px 34px",
+            // right: isArabic ? `auto` : `${defaultRight}px`,
+            // bottom: `${defaultBottom}px`,
+            // // left: !isArabic ? `auto` : `${defaultRight}px`,
+            // right: props.right
+            //   ? `${props.right.toString()}px`
+            //   : `${defaultRight}px`,
             right: props.right
               ? `${props.right.toString()}px`
               : `${defaultRight}px`,
-            bottom: props.bottom
-              ? `${props.bottom.toString()}px`
-              : `${defaultBottom}px`,
+            bottom: isArabic ? "20px" : `${defaultBottom}px`,
           }}
         >
           <Show when={props.customIconSrc}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              width="40"
-              height="40"
+              width="32"
+              height="32"
               viewBox="0 0 40 40"
               class={
                 `absolute duration-200 transition w-9 ` +
@@ -193,10 +201,10 @@ export const BubbleButton = (props: Props) => {
               "background-color": props.isBotOpened ? "#55BBEB" : "#678AA1",
               "z-index": 2201,
               right: isArabic
-                ? `${buttonMenuArabic}px`
+                ? `${buttonMenuArabic()}px`
                 : props.right && !isArabic
-                ? `${buttenMenu}px`
-                : `${buttenMenu}px`,
+                ? `${windowWidth()}px`
+                : `${windowWidth()}px`,
               bottom: props.bottom ? `${30}px` : `${30}px`,
               padding: "10px",
             }}
