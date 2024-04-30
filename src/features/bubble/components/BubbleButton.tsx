@@ -36,7 +36,7 @@ function useVisualViewportWidthEn() {
   function handleResize() {
     setViewPortWidth(
       (window?.visualViewport?.width || 0) / 4 +
-        (window?.visualViewport?.width || 0) / 10 || 0
+        (window?.visualViewport?.width || 0) / 11 || 0
     );
   }
 
@@ -205,7 +205,7 @@ export const BubbleButton = (props: Props) => {
                 : props.right && !isArabic
                 ? `${windowWidth()}px`
                 : `${windowWidth()}px`,
-              bottom: props.bottom ? `${30}px` : `${30}px`,
+              bottom: "30px",
               padding: "10px",
             }}
           >
