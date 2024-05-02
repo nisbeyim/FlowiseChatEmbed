@@ -149,7 +149,7 @@ export const BubbleButton = (props: Props) => {
           class={`fixed rounded-full  transition-transform duration-200 flex justify-center items-center animate-fade-in w-[60px] h-[60px]`}
           style={{
             "background-color": props.backgroundColor ?? defaultButtonColor,
-            "z-index": 100,
+            "z-index": 3201,
             "box-shadow": "0 5px 4px 0 rgba(0, 0, 0, .26)",
             "border-radius": "34px 8px 34px 34px",
             // right: isArabic ? `auto` : `${defaultRight}px`,
@@ -218,7 +218,7 @@ export const BubbleButton = (props: Props) => {
             class={`fixed shadow-md rounded-full  transition-transform duration-200 flex justify-center items-center animate-fade-in w-[25px] h-[25px]`}
             style={{
               "background-color": props.isBotOpened ? "#55BBEB" : "#678AA1",
-              "z-index": 2201,
+              "z-index": 3201,
               right: isArabic
                 ? `${buttonMenuArabic()}px`
                 : props.right && !isArabic

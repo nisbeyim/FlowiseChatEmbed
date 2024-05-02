@@ -132,7 +132,7 @@ export const Bubble = (props: BubbleProps) => {
             ? !isArabic
               ? " bottom-[165px]"
               : " bottom-[90px]"
-            : " bottom-[59px]")
+            : " bottom-[56px]")
           // `${!isArabic ? "right-5" : "left-auto"}` +
           // `${isArabic ? " right-5" : "left-auto"}`
         }
