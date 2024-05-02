@@ -86,7 +86,7 @@ function useCheckURLChange() {
     }
   };
 
-  const interval = setInterval(checkPathname, 500);
+  const interval = setInterval(checkPathname, 200);
 
   onCleanup(() => clearInterval(interval));
 
