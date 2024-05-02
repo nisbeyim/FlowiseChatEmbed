@@ -77,6 +77,22 @@ function useVisualViewportWidthArabic() {
 
   return viewportWidth;
 }
+function useCheckURLChange() {
+  const [pathname, setPathname] = createSignal(window.location.pathname);
+
+  const checkPathname = () => {
+    if (window.location.pathname !== pathname()) {
+      setPathname(window.location.pathname);
+    }
+  };
+
+  const interval = setInterval(checkPathname, 500);
+
+  onCleanup(() => clearInterval(interval));
+
+  return pathname;
+}
+
 export const BubbleButton = (props: Props) => {
   const windowWidth = useVisualViewportWidthEn();
 
@@ -121,6 +137,9 @@ export const BubbleButton = (props: Props) => {
       document.removeEventListener("mousedown", handleClickOutside);
     });
   });
+
+  const pathName = useCheckURLChange();
+
   return (
     <div>
       {isLargeSize() ? (
@@ -206,6 +225,7 @@ export const BubbleButton = (props: Props) => {
                 ? `${windowWidth()}px`
                 : `${windowWidth()}px`,
               bottom: "30px",
+              display: pathName() === "/dashboard" ? "none" : "",
               padding: "10px",
             }}
           >
