@@ -36,7 +36,7 @@ function useVisualViewportWidthEn() {
   function handleResize() {
     setViewPortWidth(
       (window?.visualViewport?.width || 0) / 4 +
-        (window?.visualViewport?.width || 0) / 11 || 0
+        (window?.visualViewport?.width || 0) / 14 || 0
     );
   }
 
@@ -215,9 +215,9 @@ export const BubbleButton = (props: Props) => {
       ) : (
         <button part="button" onClick={() => props.toggleBot()}>
           <div
-            class={`fixed shadow-md rounded-full  transition-transform duration-200 flex justify-center items-center animate-fade-in w-[25px] h-[25px]`}
+            class={`fixed  rounded-full  transition-transform duration-200 flex justify-center items-center animate-fade-in w-[25px] h-[25px]`}
             style={{
-              "background-color": props.isBotOpened ? "#55BBEB" : "#678AA1",
+              "background-color": props.isBotOpened ? "#55BBEB" : "#577487",
               "z-index": 3201,
               right: isArabic
                 ? `${buttonMenuArabic()}px`
@@ -294,10 +294,10 @@ export const BubbleButton = (props: Props) => {
             </svg>
             <div>
               <span
-                class={`text-xs leading-[16.8px] font-medium  absolute top-[29px] left-[-26px] whitespace-nowrap`}
+                class={`text-xs leading-[16.8px] font-medium  absolute top-[29px] left-[-26px] whitespace-nowrap text-center text-[#678AA1]`}
                 style={{
                   color: props.isBotOpened ? "#36A0D0" : "#678AA1",
-                  "margin-left": isArabic ? "11px" : "0px",
+                  "margin-left": isArabic ? "11px" : "3px",
                 }}
               >
                 {name}
