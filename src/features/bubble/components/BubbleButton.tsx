@@ -77,7 +77,7 @@ function useVisualViewportWidthArabic() {
 
   return viewportWidth;
 }
-function useCheckURLChange() {
+export function useCheckURLChange() {
   const [pathname, setPathname] = createSignal(window.location.pathname);
 
   const checkPathname = () => {

@@ -7,7 +7,7 @@ import {
   splitProps,
 } from "solid-js";
 import styles from "../../../assets/index.css";
-import { BubbleButton } from "./BubbleButton";
+import { BubbleButton, useCheckURLChange } from "./BubbleButton";
 import { BubbleParams } from "../types";
 import { Bot, BotProps } from "../../../components/Bot";
 import { AybjaxData } from "@/window";
@@ -90,6 +90,17 @@ export const Bubble = (props: BubbleProps) => {
 
   const viewPort = useVisualViewportHeight();
   const width = useVisualViewportWidth();
+  const pathName = useCheckURLChange();
+  const element = document.getElementsByTagName("flowise-chatbot")[0];
+
+  createEffect(() => {
+    if (pathName() === "/dashboard" || pathName().includes("passing")) {
+      element.setAttribute("style", "display:none");
+    } else {
+      element.setAttribute("style", "display:block");
+    }
+  }, [pathName()]);
+
   return (
     <>
       <style>{styles}</style>
