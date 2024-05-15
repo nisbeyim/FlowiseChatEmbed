@@ -30,18 +30,21 @@ export class AybjaxData {
     ru?: string;
     en?: string;
     ar?: string;
+    ko?: string;
   } = {};
   placeholder: {
     kk?: string;
     ru?: string;
     en?: string;
     ar?: string;
+    ko?: string;
   } = {};
   name: {
     kk?: string;
     ru?: string;
     en?: string;
     ar?: string;
+    ko?: string;
   } = {};
 }
 
