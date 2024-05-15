@@ -17,6 +17,7 @@ import {
 import { Badge } from "./Badge";
 import socketIOClient from "socket.io-client";
 import { Popup } from "@/features/popup";
+import { helperName } from "./localeNames";
 
 type messageType = "apiMessage" | "userMessage" | "usermessagewaiting";
 
@@ -371,23 +372,8 @@ export const Bot = (props: BotProps & { class?: string }) => {
     });
     return newSourceDocuments;
   };
-  const locale = localStorage.getItem("i18nextLng");
-  const name =
-    locale === "kk"
-      ? "AI Көмекші"
-      : locale === "ru"
-      ? "AI Помощник"
-      : locale === "ar"
-      ? "AI مساعد"
-      : locale === "en-US"
-      ? "AI Assistant"
-      : locale === "en"
-      ? "AI Assistant"
-      : locale === "en-AE"
-      ? "AI Assistant"
-      : locale === "ar-AE"
-      ? "AI مساعد"
-      : "AI Assistant";
+ 
+
   const [windowHeight, setWindowHeight] = createSignal(window.innerHeight);
   const [windowWidth, setWindowWidth] = createSignal(window.innerWidth);
   window.addEventListener("resize", () => {
@@ -440,7 +426,7 @@ export const Bot = (props: BotProps & { class?: string }) => {
             >
               <div class="flex gap-4 ">
                 <div class=" text-lg text-[#364954] leading-[25.2px] font-bold">
-                  {name}
+                  {helperName}
                 </div>
               </div>
               <span class="text-[#678AA1] text-[10px] font-normal leading-[14px]">

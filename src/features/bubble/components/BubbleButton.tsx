@@ -1,6 +1,7 @@
 import { Show, createEffect, createSignal, onCleanup } from "solid-js";
 import { isNotDefined } from "@/utils/index";
 import { ButtonTheme } from "../types";
+import { helperName } from "@/components/localeNames";
 
 type Props = ButtonTheme & {
   isBotOpened: boolean;
@@ -98,22 +99,7 @@ export const BubbleButton = (props: Props) => {
 
   const locale = localStorage.getItem("i18nextLng") ?? "kk";
 
-  const name =
-    locale === "kk"
-      ? "AI Көмекші"
-      : locale === "ru"
-      ? "AI Помощник"
-      : locale === "ar"
-      ? "AI مساعد"
-      : locale === "en-US"
-      ? "AI Assistant"
-      : locale === "en"
-      ? "AI Assistant"
-      : locale === "en-AE"
-      ? "AI Assistant"
-      : locale === "ar-AE"
-      ? "AI مساعد"
-      : "AI Assistant";
+  
 
   const isArabic = locale === "ar";
 
@@ -300,7 +286,7 @@ export const BubbleButton = (props: Props) => {
                   "margin-left": isArabic ? "11px" : "3px",
                 }}
               >
-                {name}
+                {helperName}
               </span>
             </div>
           </div>
