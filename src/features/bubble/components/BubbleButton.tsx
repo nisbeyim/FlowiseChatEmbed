@@ -1,7 +1,7 @@
 import { Show, createEffect, createSignal, onCleanup } from "solid-js";
 import { isNotDefined } from "@/utils/index";
 import { ButtonTheme } from "../types";
-import { helperName } from "@/components/localeNames";
+
 
 type Props = ButtonTheme & {
   isBotOpened: boolean;
@@ -98,7 +98,24 @@ export const BubbleButton = (props: Props) => {
   const windowWidth = useVisualViewportWidthEn();
 
   const locale = localStorage.getItem("i18nextLng") ?? "kk";
-
+  const helperName = 
+    locale === "kk"
+    ? "AI Көмекші"
+    : locale === "ru"
+    ? "AI Помощник"
+    : locale === "ar"
+    ? "AI مساعد"
+    : locale === "en-US"
+    ? "AI Assistant"
+    : locale === "en"
+    ? "AI Assistant"
+    : locale === "en-AE"
+    ? "AI Assistant"
+    : locale === "ar-AE"
+    ? "AI مساعد"
+    : locale === "ko"
+    ? "AI 보조"
+    : "AI Assistant";
   
 
   const isArabic = locale === "ar";
