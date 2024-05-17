@@ -66,12 +66,19 @@ export const Bubble = (props: BubbleProps) => {
   const openBot = () => {
     if (!isBotStarted()) setIsBotStarted(true);
     setIsBotOpened(true);
-    document.body.style.overflow = "hidden";
+    const width = useVisualViewportWidth();
+    if (width() < 768){
+      document.body.style.overflow = "hidden";
+    }
+
   };
 
   const closeBot = () => {
     setIsBotOpened(false);
-    document.body.style.overflow = "visible";
+    const width = useVisualViewportWidth();
+    if (width() < 768){
+      document.body.style.overflow = "visible";
+    }
   };
 
   const toggleBot = () => {
