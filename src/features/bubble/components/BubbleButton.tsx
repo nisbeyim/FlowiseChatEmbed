@@ -2,7 +2,6 @@ import { Show, createEffect, createSignal, onCleanup } from "solid-js";
 import { isNotDefined } from "@/utils/index";
 import { ButtonTheme } from "../types";
 
-
 type Props = ButtonTheme & {
   isBotOpened: boolean;
   toggleBot: () => void;
@@ -98,25 +97,24 @@ export const BubbleButton = (props: Props) => {
   const windowWidth = useVisualViewportWidthEn();
 
   const locale = localStorage.getItem("i18nextLng") ?? "kk";
-  const helperName = 
+  const helperName =
     locale === "kk"
-    ? "AI Көмекші"
-    : locale === "ru"
-    ? "AI Помощник"
-    : locale === "ar"
-    ? "AI مساعد"
-    : locale === "en-US"
-    ? "AI Assistant"
-    : locale === "en"
-    ? "AI Assistant"
-    : locale === "en-AE"
-    ? "AI Assistant"
-    : locale === "ar-AE"
-    ? "AI مساعد"
-    : locale === "ko"
-    ? "AI 보조"
-    : "AI Assistant";
-  
+      ? "AI Көмекші"
+      : locale === "ru"
+      ? "AI Помощник"
+      : locale === "ar"
+      ? "AI مساعد"
+      : locale === "en-US"
+      ? "AI Assistant"
+      : locale === "en"
+      ? "AI Assistant"
+      : locale === "en-AE"
+      ? "AI Assistant"
+      : locale === "ar-AE"
+      ? "AI مساعد"
+      : locale === "ko"
+      ? "AI 보조"
+      : "AI Assistant";
 
   const isArabic = locale === "ar";
   const isKorean = locale === "ko";
@@ -166,6 +164,11 @@ export const BubbleButton = (props: Props) => {
               ? `${props.right.toString()}px`
               : `${defaultRight}px`,
             bottom: isArabic ? "20px" : `${defaultBottom}px`,
+            display:
+              pathName() === "/dashboard" ||
+              pathName().includes("authorization")
+                ? "none"
+                : "",
           }}
         >
           <Show when={props.customIconSrc}>
@@ -229,7 +232,11 @@ export const BubbleButton = (props: Props) => {
                 ? `${windowWidth()}px`
                 : `${windowWidth()}px`,
               bottom: "30px",
-              display: pathName() === "/dashboard" ? "none" : "",
+              display:
+                pathName() === "/dashboard" ||
+                pathName().includes("authorization")
+                  ? "none"
+                  : "",
               padding: "10px",
             }}
           >
@@ -301,8 +308,7 @@ export const BubbleButton = (props: Props) => {
                 class={`text-xs leading-[16.8px] font-medium  absolute top-[29px] left-[-26px] whitespace-nowrap text-center text-[#678AA1]`}
                 style={{
                   color: props.isBotOpened ? "#36A0D0" : "#678AA1",
-                  "margin-left": isArabic ? "11px" 
-                               : isKorean? "15px":"3px",
+                  "margin-left": isArabic ? "11px" : isKorean ? "15px" : "3px",
                 }}
               >
                 {helperName}
