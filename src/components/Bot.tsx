@@ -17,6 +17,7 @@ import {
 import { Badge } from "./Badge";
 import socketIOClient from "socket.io-client";
 import { Popup } from "@/features/popup";
+import { useCheckURLChange } from "@/features/bubble/components/BubbleButton";
 // import { helperName } from "./localeNames";
 
 type messageType = "apiMessage" | "userMessage" | "usermessagewaiting";
@@ -372,22 +373,25 @@ export const Bot = (props: BotProps & { class?: string }) => {
     });
     return newSourceDocuments;
   };
-  const locale = localStorage.getItem("i18nextLng");
-  const helperName = 
-      locale === "kk"
+  const pathName = useCheckURLChange();
+  const locale = pathName().includes("ru")
+    ? "ru"
+    : pathName().includes("ar")
+    ? "ar"
+    : pathName().includes("kk")
+    ? "kk"
+    : pathName().includes("ko")
+    ? "ko"
+    : "en";
+  const helperName =
+    locale === "kk"
       ? "AI Көмекші"
       : locale === "ru"
       ? "AI Помощник"
       : locale === "ar"
       ? "AI مساعد"
-      : locale === "en-US"
-      ? "AI Assistant"
       : locale === "en"
       ? "AI Assistant"
-      : locale === "en-AE"
-      ? "AI Assistant"
-      : locale === "ar-AE"
-      ? "AI مساعد"
       : locale === "ko"
       ? "AI 보조"
       : "AI Assistant";
@@ -420,8 +424,7 @@ export const Bot = (props: BotProps & { class?: string }) => {
       document.removeEventListener("mousedown", handleClickOutside);
     });
   }, [botContainer, props.isBotOpened, props.toggleBot]);
-  
-  
+
   return (
     <>
       <div
@@ -444,9 +447,7 @@ export const Bot = (props: BotProps & { class?: string }) => {
               }}
             >
               <div class="flex gap-4 ">
-                <div class=" text-lg text-[#364954] leading-[25.2px] font-bold" 
-
-                >
+                <div class=" text-lg text-[#364954] leading-[25.2px] font-bold">
                   {helperName}
                 </div>
               </div>

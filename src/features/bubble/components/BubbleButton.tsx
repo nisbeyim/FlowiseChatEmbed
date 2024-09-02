@@ -95,8 +95,17 @@ export function useCheckURLChange() {
 
 export const BubbleButton = (props: Props) => {
   const windowWidth = useVisualViewportWidthEn();
+  const pathName = useCheckURLChange();
+  const locale = pathName().includes("ru")
+    ? "ru"
+    : pathName().includes("ar")
+    ? "ar"
+    : pathName().includes("kk")
+    ? "kk"
+    : pathName().includes("ko")
+    ? "ko"
+    : "en";
 
-  const locale = localStorage.getItem("i18nextLng") ?? "kk";
   const helperName =
     locale === "kk"
       ? "AI Көмекші"
@@ -104,14 +113,8 @@ export const BubbleButton = (props: Props) => {
       ? "AI Помощник"
       : locale === "ar"
       ? "AI مساعد"
-      : locale === "en-US"
-      ? "AI Assistant"
       : locale === "en"
       ? "AI Assistant"
-      : locale === "en-AE"
-      ? "AI Assistant"
-      : locale === "ar-AE"
-      ? "AI مساعد"
       : locale === "ko"
       ? "AI 보조"
       : "AI Assistant";
@@ -140,8 +143,6 @@ export const BubbleButton = (props: Props) => {
     });
   });
 
-  const pathName = useCheckURLChange();
-
   return (
     <div>
       {isLargeSize() ? (
@@ -165,8 +166,7 @@ export const BubbleButton = (props: Props) => {
               : `${defaultRight}px`,
             bottom: isArabic ? "20px" : `${defaultBottom}px`,
             display:
-              pathName() === "/dashboard" ||
-              pathName().includes("authorization")
+              pathName().includes("dashboard") || pathName().includes("login")
                 ? "none"
                 : "",
           }}
@@ -242,17 +242,62 @@ export const BubbleButton = (props: Props) => {
           >
             <Show when={props.customIconSrc}>
               <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="23"
-                height="22"
-                viewBox="0 0 23 22"
+                width="28"
+                height="28"
+                viewBox="0 0 28 28"
                 fill="none"
+                xmlns="http://www.w3.org/2000/svg"
                 class={
                   `absolute duration-200 transition w-5 ` +
                   (props.isBotOpened
                     ? "scale-0 -rotate-180 opacity-0"
                     : "scale-100 rotate-0 opacity-100")
                 }
+              >
+                <g id="Group">
+                  <g id="Group_2">
+                    <path
+                      id="Path"
+                      d="M14.2061 12.0451C14.32 12.159 14.32 12.3436 14.2061 12.4575C14.0922 12.5714 13.9075 12.5714 13.7936 12.4575C13.6797 12.3436 13.6797 12.159 13.7936 12.0451C13.9075 11.9312 14.0922 11.9312 14.2061 12.0451"
+                      stroke="#678AA1"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                    <path
+                      id="Path_2"
+                      d="M18.8731 12.0451C18.987 12.159 18.987 12.3436 18.8731 12.4575C18.7592 12.5714 18.5745 12.5714 18.4606 12.4575C18.3467 12.3436 18.3467 12.159 18.4606 12.0451C18.5745 11.9312 18.7592 11.9312 18.8731 12.0451"
+                      stroke="#678AA1"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                    <path
+                      id="Path_3"
+                      d="M9.53957 12.0451C9.65348 12.159 9.65348 12.3436 9.53957 12.4575C9.42567 12.5714 9.241 12.5714 9.12709 12.4575C9.01319 12.3436 9.01319 12.159 9.12709 12.0451C9.241 11.9312 9.42567 11.9312 9.53957 12.0451"
+                      stroke="#678AA1"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                    <path
+                      id="Path_4"
+                      d="M14 24.5L9.33333 19.8345V19.8333H5.83333C4.54417 19.8333 3.5 18.7892 3.5 17.5V5.83333C3.5 4.54417 4.54417 3.5 5.83333 3.5H22.1667C23.4558 3.5 24.5 4.54417 24.5 5.83333V17.5C24.5 18.7892 23.4558 19.8333 22.1667 19.8333H18.6667L14 24.4988"
+                      stroke="#678AA1"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </g>
+                </g>
+              </svg>
+
+              {/* <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="23"
+                height="22"
+                viewBox="0 0 23 22"
+                fill="none"
               >
                 <path
                   d="M14.8984 5.39776L15.488 3.62891H16.5125L17.1022 5.39776L18.871 5.98738V7.01196L17.1022 7.60158L16.5125 9.37043H15.488L14.8984 7.60158L13.1295 7.01196V5.98738L14.8984 5.39776Z"
@@ -268,18 +313,63 @@ export const BubbleButton = (props: Props) => {
                   d="M7.30384 5.59967H10.2967L13.3299 17.2997H11.4704L10.7704 14.5997H6.83002L6.13002 17.2997H4.27051L7.30384 5.59967ZM7.29668 12.7997H10.3038L8.90383 7.39967H8.69668L7.29668 12.7997Z"
                   fill="#FFFCFF"
                 />
-              </svg>
+              </svg> */}
             </Show>
-
             <svg
-              width="30"
-              height="30"
+              width="28"
+              height="28"
+              viewBox="0 0 28 28"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
               class={
                 `absolute duration-200 transition w-5 ` +
                 (props.isBotOpened
                   ? "scale-100 rotate-0 opacity-100"
                   : "scale-0 -rotate-180 opacity-0")
               }
+            >
+              <g id="Messages, Chat/Messages, Chat">
+                <g id="Group">
+                  <g id="Group_2">
+                    <path
+                      id="Path"
+                      fill-rule="evenodd"
+                      clip-rule="evenodd"
+                      d="M14 24.5L9.33333 19.8345V19.8333H5.83333C4.54417 19.8333 3.5 18.7892 3.5 17.5V5.83333C3.5 4.54417 4.54417 3.5 5.83333 3.5H22.1667C23.4558 3.5 24.5 4.54417 24.5 5.83333V17.5C24.5 18.7892 23.4558 19.8333 22.1667 19.8333H18.6667L14 24.4988"
+                      fill="#55BBEB"
+                    />
+                    <path
+                      id="Path_2"
+                      d="M14.2061 12.0451C14.32 12.159 14.32 12.3436 14.2061 12.4575C14.0922 12.5714 13.9075 12.5714 13.7936 12.4575C13.6797 12.3436 13.6797 12.159 13.7936 12.0451C13.9075 11.9312 14.0922 11.9312 14.2061 12.0451"
+                      stroke="#E9F0F3"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                    <path
+                      id="Path_3"
+                      d="M18.8731 12.0451C18.987 12.159 18.987 12.3436 18.8731 12.4575C18.7592 12.5714 18.5745 12.5714 18.4606 12.4575C18.3467 12.3436 18.3467 12.159 18.4606 12.0451C18.5745 11.9312 18.7592 11.9312 18.8731 12.0451"
+                      stroke="#E9F0F3"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                    <path
+                      id="Path_4"
+                      d="M9.53957 12.0451C9.65348 12.159 9.65348 12.3436 9.53957 12.4575C9.42567 12.5714 9.241 12.5714 9.12709 12.4575C9.01319 12.3436 9.01319 12.159 9.12709 12.0451C9.241 11.9312 9.42567 11.9312 9.53957 12.0451"
+                      stroke="#E9F0F3"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </g>
+                </g>
+              </g>
+            </svg>
+
+            {/* <svg
+              width="30"
+              height="30"
               viewBox="0 0 30 30"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
@@ -302,7 +392,7 @@ export const BubbleButton = (props: Props) => {
                 d="M10.8038 9.59967H13.7967L16.8299 21.2997H14.9704L14.2704 18.5997H10.33L9.63002 21.2997H7.77051L10.8038 9.59967ZM10.7967 16.7997H13.8038L12.4038 11.3997H12.1967L10.7967 16.7997Z"
                 fill="#FFF"
               />
-            </svg>
+            </svg> */}
             <div>
               <span
                 class={`text-xs leading-[16.8px] font-medium  absolute top-[29px] left-[-26px] whitespace-nowrap text-center text-[#678AA1]`}
