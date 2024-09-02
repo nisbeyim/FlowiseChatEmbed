@@ -5043,18 +5043,20 @@ const Vr = (t) => {
           })),
         t
       );
-    var _;
+    var _ = Pt();
     const L =
         "kk" ==
-        (_ = (_ = Pt())().includes("ru")
-          ? "ru"
-          : _().includes("ar")
-          ? "ar"
-          : _().includes("kk")
-          ? "kk"
-          : _().includes("ko")
-          ? "ko"
-          : "en")
+        (_ =
+          (console.log(_(), 123),
+          _().includes("ru")
+            ? "ru"
+            : _().includes("ar")
+            ? "ar"
+            : _().includes("kk")
+            ? "kk"
+            : _().includes("ko")
+            ? "ko"
+            : "en"))
           ? "AI Көмекші"
           : "ru" == _
           ? "AI Помощник"

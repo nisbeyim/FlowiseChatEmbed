@@ -373,7 +373,10 @@ export const Bot = (props: BotProps & { class?: string }) => {
     });
     return newSourceDocuments;
   };
+
   const pathName = useCheckURLChange();
+  console.log(pathName(), 123);
+
   const locale = pathName().includes("ru")
     ? "ru"
     : pathName().includes("ar")
