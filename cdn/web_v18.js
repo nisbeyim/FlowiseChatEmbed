@@ -1166,21 +1166,22 @@ const Pt = (t) => {
           t
         );
       })(),
-      r = Bt();
-    var s = r().split("/")[1];
-    const n =
-        "kk" === s
+      r = Bt(),
+      s = 2 === r().split("/").length;
+    var n = r().split("/")[1];
+    const i =
+        "kk" === n
           ? "AI Көмекші"
-          : "ru" === s
+          : "ru" === n
           ? "AI Помощник"
-          : "ar" === s
+          : "ar" === n
           ? "AI مساعد"
-          : "en" !== s && "ko" === s
+          : "en" !== n && "ko" === n
           ? "AI 보조"
           : "AI Assistant",
-      i = "ar" === s,
-      o = "ko" === s,
-      a = (function () {
+      o = "ar" === n,
+      a = "ko" === n,
+      l = (function () {
         const [t, e] = x(0);
         function r() {
           e(
@@ -1197,7 +1198,7 @@ const Pt = (t) => {
           t
         );
       })(),
-      l = (function (t) {
+      c = (function (t) {
         const [e, r] = x(window.matchMedia(t).matches);
         return (
           k(() => {
@@ -1221,12 +1222,12 @@ const Pt = (t) => {
       }),
       C(
         (() => {
-          const s = C(() => !!l());
+          const n = C(() => !!c());
           return () =>
-            (s()
+            (n()
               ? () => {
                   const e = Ct(),
-                    s = e.firstChild;
+                    n = e.firstChild;
                   return (
                     (e.$$click = () => t.toggleBot()),
                     e.style.setProperty("z-index", "3201"),
@@ -1235,8 +1236,8 @@ const Pt = (t) => {
                       "0 5px 4px 0 rgba(0, 0, 0, .26)"
                     ),
                     e.style.setProperty("border-radius", "34px 8px 34px 34px"),
-                    null != (i ? "20px" : "96px")
-                      ? e.style.setProperty("bottom", i ? "20px" : "96px")
+                    null != (o ? "20px" : "96px")
+                      ? e.style.setProperty("bottom", o ? "20px" : "96px")
                       : e.style.removeProperty("bottom"),
                     ct(
                       e,
@@ -1261,39 +1262,40 @@ const Pt = (t) => {
                           );
                         },
                       }),
-                      s
+                      n
                     ),
-                    s.style.setProperty("fill", "white"),
+                    n.style.setProperty("fill", "white"),
                     A(
-                      (n) => {
-                        var i = t.backgroundColor ?? "#3B81F6",
-                          o = t.right ? t.right.toString() + "px" : "25px",
-                          a =
+                      (i) => {
+                        var o = t.backgroundColor ?? "#3B81F6",
+                          a = t.right ? t.right.toString() + "px" : "25px",
+                          l =
+                            s ||
                             r().includes("dashboard") ||
                             r().includes("login") ||
                             r().includes("programs")
                               ? "none"
                               : "",
-                          l =
+                          c =
                             "absolute duration-200 transition w-9 " +
                             (t.isBotOpened
                               ? "scale-100 rotate-0 opacity-100"
                               : "scale-0 -rotate-180 opacity-0");
                         return (
-                          i !== n._v$ &&
-                            (null != (n._v$ = i)
-                              ? e.style.setProperty("background-color", i)
+                          o !== i._v$ &&
+                            (null != (i._v$ = o)
+                              ? e.style.setProperty("background-color", o)
                               : e.style.removeProperty("background-color")),
-                          o !== n._v$2 &&
-                            (null != (n._v$2 = o)
-                              ? e.style.setProperty("right", o)
+                          a !== i._v$2 &&
+                            (null != (i._v$2 = a)
+                              ? e.style.setProperty("right", a)
                               : e.style.removeProperty("right")),
-                          a !== n._v$3 &&
-                            (null != (n._v$3 = a)
-                              ? e.style.setProperty("display", a)
+                          l !== i._v$3 &&
+                            (null != (i._v$3 = l)
+                              ? e.style.setProperty("display", l)
                               : e.style.removeProperty("display")),
-                          l !== n._v$4 && it(s, "class", (n._v$4 = l)),
-                          n
+                          c !== i._v$4 && it(n, "class", (i._v$4 = c)),
+                          i
                         );
                       },
                       { _v$: void 0, _v$2: void 0, _v$3: void 0, _v$4: void 0 }
@@ -1302,16 +1304,16 @@ const Pt = (t) => {
                   );
                 }
               : () => {
-                  const s = St(),
-                    l = s.firstChild,
-                    c = l.nextSibling.firstChild;
+                  const n = St(),
+                    c = n.firstChild,
+                    h = c.nextSibling.firstChild;
                   return (
-                    (s.$$click = () => t.toggleBot()),
-                    s.style.setProperty("z-index", "3201"),
-                    s.style.setProperty("bottom", "27px"),
-                    s.style.setProperty("padding", "10px"),
+                    (n.$$click = () => t.toggleBot()),
+                    n.style.setProperty("z-index", "3201"),
+                    n.style.setProperty("bottom", "27px"),
+                    n.style.setProperty("padding", "10px"),
                     ct(
-                      s,
+                      n,
                       W($, {
                         get when() {
                           return t.customIconSrc;
@@ -1333,50 +1335,51 @@ const Pt = (t) => {
                           );
                         },
                       }),
-                      l
+                      c
                     ),
-                    null != (i ? "11px" : o ? "15px" : "3px")
-                      ? c.style.setProperty(
+                    null != (o ? "11px" : a ? "15px" : "3px")
+                      ? h.style.setProperty(
                           "margin-left",
-                          i ? "11px" : o ? "15px" : "3px"
+                          o ? "11px" : a ? "15px" : "3px"
                         )
-                      : c.style.removeProperty("margin-left"),
-                    ct(c, n),
+                      : h.style.removeProperty("margin-left"),
+                    ct(h, i),
                     A(
-                      (n) => {
-                        var o = i ? a() + "px" : (t.right, e() + "px"),
-                          h =
+                      (i) => {
+                        var a = o ? l() + "px" : (t.right, e() + "px"),
+                          u =
+                            s ||
                             r().includes("/dashboard") ||
                             r().includes("authorization") ||
                             r().includes("programs")
                               ? "none"
                               : "",
-                          u =
+                          p =
                             "absolute duration-200 transition w-[30px] " +
                             (t.isBotOpened
                               ? "scale-100 rotate-0 opacity-100"
                               : "scale-0 -rotate-180 opacity-0"),
-                          p = t.isBotOpened ? "#36A0D0" : "#678AA1";
+                          d = t.isBotOpened ? "#36A0D0" : "#678AA1";
                         return (
-                          o !== n._v$5 &&
-                            (null != (n._v$5 = o)
-                              ? s.style.setProperty("right", o)
-                              : s.style.removeProperty("right")),
-                          h !== n._v$6 &&
-                            (null != (n._v$6 = h)
-                              ? s.style.setProperty("display", h)
-                              : s.style.removeProperty("display")),
-                          u !== n._v$7 && it(l, "class", (n._v$7 = u)),
-                          p !== n._v$8 &&
-                            (null != (n._v$8 = p)
-                              ? c.style.setProperty("color", p)
-                              : c.style.removeProperty("color")),
-                          n
+                          a !== i._v$5 &&
+                            (null != (i._v$5 = a)
+                              ? n.style.setProperty("right", a)
+                              : n.style.removeProperty("right")),
+                          u !== i._v$6 &&
+                            (null != (i._v$6 = u)
+                              ? n.style.setProperty("display", u)
+                              : n.style.removeProperty("display")),
+                          p !== i._v$7 && it(c, "class", (i._v$7 = p)),
+                          d !== i._v$8 &&
+                            (null != (i._v$8 = d)
+                              ? h.style.setProperty("color", d)
+                              : h.style.removeProperty("color")),
+                          i
                         );
                       },
                       { _v$5: void 0, _v$6: void 0, _v$7: void 0, _v$8: void 0 }
                     ),
-                    s
+                    n
                   );
                 })();
         })()

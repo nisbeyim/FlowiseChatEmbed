@@ -96,6 +96,8 @@ export function useCheckURLChange() {
 export const BubbleButton = (props: Props) => {
   const windowWidth = useVisualViewportWidthEn();
   const pathName = useCheckURLChange();
+
+  const isMainPage = pathName().split("/").length === 2;
   const locale = pathName().split("/")[1];
 
   const helperName =
@@ -158,6 +160,7 @@ export const BubbleButton = (props: Props) => {
               : `${defaultRight}px`,
             bottom: isArabic ? "20px" : `${defaultBottom}px`,
             display:
+              isMainPage ||
               pathName().includes("dashboard") ||
               pathName().includes("login") ||
               pathName().includes("programs")
@@ -227,6 +230,7 @@ export const BubbleButton = (props: Props) => {
               : `${windowWidth()}px`,
             bottom: "27px",
             display:
+              isMainPage ||
               pathName().includes("/dashboard") ||
               pathName().includes("authorization") ||
               pathName().includes("programs")
