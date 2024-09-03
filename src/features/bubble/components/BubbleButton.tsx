@@ -96,15 +96,7 @@ export function useCheckURLChange() {
 export const BubbleButton = (props: Props) => {
   const windowWidth = useVisualViewportWidthEn();
   const pathName = useCheckURLChange();
-  const locale = pathName().includes("ru")
-    ? "ru"
-    : pathName().includes("ar")
-    ? "ar"
-    : pathName().includes("kk")
-    ? "kk"
-    : pathName().includes("ko")
-    ? "ko"
-    : "en";
+  const locale = pathName().split("/")[1];
 
   const helperName =
     locale === "kk"
@@ -124,7 +116,7 @@ export const BubbleButton = (props: Props) => {
 
   const buttonMenuArabic = useVisualViewportWidthArabic();
 
-  const isLargeSize = useMediaQuery("(min-width: 768px)");
+  const isLargeSize = useMediaQuery("(min-width: 640px)");
   let botRef: HTMLElement | null;
 
   createEffect(() => {
@@ -144,7 +136,7 @@ export const BubbleButton = (props: Props) => {
   });
 
   return (
-    <div>
+    <>
       {isLargeSize() ? (
         <button
           part="button"
@@ -166,7 +158,9 @@ export const BubbleButton = (props: Props) => {
               : `${defaultRight}px`,
             bottom: isArabic ? "20px" : `${defaultBottom}px`,
             display:
-              pathName().includes("dashboard") || pathName().includes("login")
+              pathName().includes("dashboard") ||
+              pathName().includes("login") ||
+              pathName().includes("programs")
                 ? "none"
                 : "",
           }}
@@ -220,79 +214,81 @@ export const BubbleButton = (props: Props) => {
           </svg>
         </button>
       ) : (
-        <button part="button" onClick={() => props.toggleBot()}>
-          <div
-            class={`fixed  rounded-full  transition-transform duration-200 flex justify-center items-center animate-fade-in w-[25px] h-[25px]`}
-            style={{
-              "background-color": props.isBotOpened ? "#55BBEB" : "#577487",
-              "z-index": 3201,
-              right: isArabic
-                ? `${buttonMenuArabic()}px`
-                : props.right && !isArabic
-                ? `${windowWidth()}px`
-                : `${windowWidth()}px`,
-              bottom: "30px",
-              display:
-                pathName() === "/dashboard" ||
-                pathName().includes("authorization")
-                  ? "none"
-                  : "",
-              padding: "10px",
-            }}
-          >
-            <Show when={props.customIconSrc}>
-              <svg
-                width="28"
-                height="28"
-                viewBox="0 0 28 28"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-                class={
-                  `absolute duration-200 transition w-5 ` +
-                  (props.isBotOpened
-                    ? "scale-0 -rotate-180 opacity-0"
-                    : "scale-100 rotate-0 opacity-100")
-                }
-              >
-                <g id="Group">
-                  <g id="Group_2">
-                    <path
-                      id="Path"
-                      d="M14.2061 12.0451C14.32 12.159 14.32 12.3436 14.2061 12.4575C14.0922 12.5714 13.9075 12.5714 13.7936 12.4575C13.6797 12.3436 13.6797 12.159 13.7936 12.0451C13.9075 11.9312 14.0922 11.9312 14.2061 12.0451"
-                      stroke="#678AA1"
-                      stroke-width="1.5"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    />
-                    <path
-                      id="Path_2"
-                      d="M18.8731 12.0451C18.987 12.159 18.987 12.3436 18.8731 12.4575C18.7592 12.5714 18.5745 12.5714 18.4606 12.4575C18.3467 12.3436 18.3467 12.159 18.4606 12.0451C18.5745 11.9312 18.7592 11.9312 18.8731 12.0451"
-                      stroke="#678AA1"
-                      stroke-width="1.5"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    />
-                    <path
-                      id="Path_3"
-                      d="M9.53957 12.0451C9.65348 12.159 9.65348 12.3436 9.53957 12.4575C9.42567 12.5714 9.241 12.5714 9.12709 12.4575C9.01319 12.3436 9.01319 12.159 9.12709 12.0451C9.241 11.9312 9.42567 11.9312 9.53957 12.0451"
-                      stroke="#678AA1"
-                      stroke-width="1.5"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    />
-                    <path
-                      id="Path_4"
-                      d="M14 24.5L9.33333 19.8345V19.8333H5.83333C4.54417 19.8333 3.5 18.7892 3.5 17.5V5.83333C3.5 4.54417 4.54417 3.5 5.83333 3.5H22.1667C23.4558 3.5 24.5 4.54417 24.5 5.83333V17.5C24.5 18.7892 23.4558 19.8333 22.1667 19.8333H18.6667L14 24.4988"
-                      stroke="#678AA1"
-                      stroke-width="1.5"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    />
-                  </g>
+        // <button part="button" onClick={() => props.toggleBot()}>
+        <div
+          class={`fixed  rounded-full  transition-transform duration-200 flex justify-center items-center animate-fade-in w-[25px] h-[25px] cursor-pointer`}
+          style={{
+            // "background-color": props.isBotOpened ? "#55BBEB" : "#577487",
+            "z-index": 3201,
+            right: isArabic
+              ? `${buttonMenuArabic()}px`
+              : props.right && !isArabic
+              ? `${windowWidth()}px`
+              : `${windowWidth()}px`,
+            bottom: "27px",
+            display:
+              pathName().includes("/dashboard") ||
+              pathName().includes("authorization") ||
+              pathName().includes("programs")
+                ? "none"
+                : "",
+            padding: "10px",
+          }}
+          onClick={() => props.toggleBot()}
+        >
+          <Show when={props.customIconSrc}>
+            <svg
+              width="28"
+              height="28"
+              viewBox="0 0 28 28"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              class={
+                `absolute duration-200 transition w-[30px] ` +
+                (props.isBotOpened
+                  ? "scale-0 -rotate-180 opacity-0"
+                  : "scale-100 rotate-0 opacity-100")
+              }
+            >
+              <g id="Group">
+                <g id="Group_2">
+                  <path
+                    id="Path"
+                    d="M14.2061 12.0451C14.32 12.159 14.32 12.3436 14.2061 12.4575C14.0922 12.5714 13.9075 12.5714 13.7936 12.4575C13.6797 12.3436 13.6797 12.159 13.7936 12.0451C13.9075 11.9312 14.0922 11.9312 14.2061 12.0451"
+                    stroke="#678AA1"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    id="Path_2"
+                    d="M18.8731 12.0451C18.987 12.159 18.987 12.3436 18.8731 12.4575C18.7592 12.5714 18.5745 12.5714 18.4606 12.4575C18.3467 12.3436 18.3467 12.159 18.4606 12.0451C18.5745 11.9312 18.7592 11.9312 18.8731 12.0451"
+                    stroke="#678AA1"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    id="Path_3"
+                    d="M9.53957 12.0451C9.65348 12.159 9.65348 12.3436 9.53957 12.4575C9.42567 12.5714 9.241 12.5714 9.12709 12.4575C9.01319 12.3436 9.01319 12.159 9.12709 12.0451C9.241 11.9312 9.42567 11.9312 9.53957 12.0451"
+                    stroke="#678AA1"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    id="Path_4"
+                    d="M14 24.5L9.33333 19.8345V19.8333H5.83333C4.54417 19.8333 3.5 18.7892 3.5 17.5V5.83333C3.5 4.54417 4.54417 3.5 5.83333 3.5H22.1667C23.4558 3.5 24.5 4.54417 24.5 5.83333V17.5C24.5 18.7892 23.4558 19.8333 22.1667 19.8333H18.6667L14 24.4988"
+                    stroke="#678AA1"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
                 </g>
-              </svg>
+              </g>
+            </svg>
 
-              {/* <svg
+            {/* <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="23"
                 height="22"
@@ -314,60 +310,60 @@ export const BubbleButton = (props: Props) => {
                   fill="#FFFCFF"
                 />
               </svg> */}
-            </Show>
-            <svg
-              width="28"
-              height="28"
-              viewBox="0 0 28 28"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-              class={
-                `absolute duration-200 transition w-5 ` +
-                (props.isBotOpened
-                  ? "scale-100 rotate-0 opacity-100"
-                  : "scale-0 -rotate-180 opacity-0")
-              }
-            >
-              <g id="Messages, Chat/Messages, Chat">
-                <g id="Group">
-                  <g id="Group_2">
-                    <path
-                      id="Path"
-                      fill-rule="evenodd"
-                      clip-rule="evenodd"
-                      d="M14 24.5L9.33333 19.8345V19.8333H5.83333C4.54417 19.8333 3.5 18.7892 3.5 17.5V5.83333C3.5 4.54417 4.54417 3.5 5.83333 3.5H22.1667C23.4558 3.5 24.5 4.54417 24.5 5.83333V17.5C24.5 18.7892 23.4558 19.8333 22.1667 19.8333H18.6667L14 24.4988"
-                      fill="#55BBEB"
-                    />
-                    <path
-                      id="Path_2"
-                      d="M14.2061 12.0451C14.32 12.159 14.32 12.3436 14.2061 12.4575C14.0922 12.5714 13.9075 12.5714 13.7936 12.4575C13.6797 12.3436 13.6797 12.159 13.7936 12.0451C13.9075 11.9312 14.0922 11.9312 14.2061 12.0451"
-                      stroke="#E9F0F3"
-                      stroke-width="1.5"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    />
-                    <path
-                      id="Path_3"
-                      d="M18.8731 12.0451C18.987 12.159 18.987 12.3436 18.8731 12.4575C18.7592 12.5714 18.5745 12.5714 18.4606 12.4575C18.3467 12.3436 18.3467 12.159 18.4606 12.0451C18.5745 11.9312 18.7592 11.9312 18.8731 12.0451"
-                      stroke="#E9F0F3"
-                      stroke-width="1.5"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    />
-                    <path
-                      id="Path_4"
-                      d="M9.53957 12.0451C9.65348 12.159 9.65348 12.3436 9.53957 12.4575C9.42567 12.5714 9.241 12.5714 9.12709 12.4575C9.01319 12.3436 9.01319 12.159 9.12709 12.0451C9.241 11.9312 9.42567 11.9312 9.53957 12.0451"
-                      stroke="#E9F0F3"
-                      stroke-width="1.5"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    />
-                  </g>
+          </Show>
+          <svg
+            width="28"
+            height="28"
+            viewBox="0 0 28 28"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            class={
+              `absolute duration-200 transition w-[30px] ` +
+              (props.isBotOpened
+                ? "scale-100 rotate-0 opacity-100"
+                : "scale-0 -rotate-180 opacity-0")
+            }
+          >
+            <g id="Messages, Chat/Messages, Chat">
+              <g id="Group">
+                <g id="Group_2">
+                  <path
+                    id="Path"
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M14 24.5L9.33333 19.8345V19.8333H5.83333C4.54417 19.8333 3.5 18.7892 3.5 17.5V5.83333C3.5 4.54417 4.54417 3.5 5.83333 3.5H22.1667C23.4558 3.5 24.5 4.54417 24.5 5.83333V17.5C24.5 18.7892 23.4558 19.8333 22.1667 19.8333H18.6667L14 24.4988"
+                    fill="#55BBEB"
+                  />
+                  <path
+                    id="Path_2"
+                    d="M14.2061 12.0451C14.32 12.159 14.32 12.3436 14.2061 12.4575C14.0922 12.5714 13.9075 12.5714 13.7936 12.4575C13.6797 12.3436 13.6797 12.159 13.7936 12.0451C13.9075 11.9312 14.0922 11.9312 14.2061 12.0451"
+                    stroke="#E9F0F3"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    id="Path_3"
+                    d="M18.8731 12.0451C18.987 12.159 18.987 12.3436 18.8731 12.4575C18.7592 12.5714 18.5745 12.5714 18.4606 12.4575C18.3467 12.3436 18.3467 12.159 18.4606 12.0451C18.5745 11.9312 18.7592 11.9312 18.8731 12.0451"
+                    stroke="#E9F0F3"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    id="Path_4"
+                    d="M9.53957 12.0451C9.65348 12.159 9.65348 12.3436 9.53957 12.4575C9.42567 12.5714 9.241 12.5714 9.12709 12.4575C9.01319 12.3436 9.01319 12.159 9.12709 12.0451C9.241 11.9312 9.42567 11.9312 9.53957 12.0451"
+                    stroke="#E9F0F3"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
                 </g>
               </g>
-            </svg>
+            </g>
+          </svg>
 
-            {/* <svg
+          {/* <svg
               width="30"
               height="30"
               viewBox="0 0 30 30"
@@ -393,20 +389,20 @@ export const BubbleButton = (props: Props) => {
                 fill="#FFF"
               />
             </svg> */}
-            <div>
-              <span
-                class={`text-xs leading-[16.8px] font-medium  absolute top-[29px] left-[-26px] whitespace-nowrap text-center text-[#678AA1]`}
-                style={{
-                  color: props.isBotOpened ? "#36A0D0" : "#678AA1",
-                  "margin-left": isArabic ? "11px" : isKorean ? "15px" : "3px",
-                }}
-              >
-                {helperName}
-              </span>
-            </div>
+          <div>
+            <span
+              class={`text-xs leading-[16.8px] font-medium  absolute top-[29px] left-[-26px] whitespace-nowrap text-center text-[#678AA1]`}
+              style={{
+                color: props.isBotOpened ? "#36A0D0" : "#678AA1",
+                "margin-left": isArabic ? "11px" : isKorean ? "15px" : "3px",
+              }}
+            >
+              {helperName}
+            </span>
           </div>
-        </button>
+        </div>
+        // </button>
       )}
-    </div>
+    </>
   );
 };

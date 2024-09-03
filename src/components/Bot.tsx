@@ -375,17 +375,8 @@ export const Bot = (props: BotProps & { class?: string }) => {
   };
 
   const pathName = useCheckURLChange();
-  console.log(pathName(), 123);
+  const locale = pathName().split("/")[1];
 
-  const locale = pathName().includes("ru")
-    ? "ru"
-    : pathName().includes("ar")
-    ? "ar"
-    : pathName().includes("kk")
-    ? "kk"
-    : pathName().includes("ko")
-    ? "ko"
-    : "en";
   const helperName =
     locale === "kk"
       ? "AI Көмекші"

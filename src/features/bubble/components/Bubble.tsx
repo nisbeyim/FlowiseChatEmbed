@@ -67,16 +67,15 @@ export const Bubble = (props: BubbleProps) => {
     if (!isBotStarted()) setIsBotStarted(true);
     setIsBotOpened(true);
     const width = useVisualViewportWidth();
-    if (width() < 768){
+    if (width() < 768) {
       document.body.style.overflow = "hidden";
     }
-
   };
 
   const closeBot = () => {
     setIsBotOpened(false);
     const width = useVisualViewportWidth();
-    if (width() < 768){
+    if (width() < 768) {
       document.body.style.overflow = "visible";
     }
   };
@@ -140,6 +139,7 @@ export const Bubble = (props: BubbleProps) => {
           "background-color":
             bubbleProps.theme?.chatWindow?.backgroundColor || "#ffffff",
           "z-index": 42424242,
+
           // right: width() < 768 ? "0" : isArabic ? "auto" : "20px",
           // left: width() < 768 ? "0" : isArabic ? "20px" : "auto",
         }}
