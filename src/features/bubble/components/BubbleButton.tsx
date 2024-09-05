@@ -146,7 +146,7 @@ export const BubbleButton = (props: Props) => {
           class={`fixed rounded-full  transition-transform duration-200 flex justify-center items-center animate-fade-in w-[60px] h-[60px]`}
           style={{
             "background-color": props.backgroundColor ?? defaultButtonColor,
-            "z-index": 3201,
+            "z-index": 1201,
             "box-shadow": "0 5px 4px 0 rgba(0, 0, 0, .26)",
             "border-radius": "34px 8px 34px 34px",
             // right: isArabic ? `auto` : `${defaultRight}px`,
@@ -161,9 +161,10 @@ export const BubbleButton = (props: Props) => {
             bottom: isArabic ? "20px" : `${defaultBottom}px`,
             display:
               isMainPage ||
-              pathName().includes("dashboard") ||
               pathName().includes("login") ||
-              pathName().includes("programs")
+              pathName().includes("programs") ||
+              pathName().includes("assessment") ||
+              localStorage.getItem("role") !== "student"
                 ? "none"
                 : "",
           }}
@@ -222,7 +223,7 @@ export const BubbleButton = (props: Props) => {
           class={`fixed  rounded-full  transition-transform duration-200 flex justify-center items-center animate-fade-in w-[25px] h-[25px] cursor-pointer`}
           style={{
             // "background-color": props.isBotOpened ? "#55BBEB" : "#577487",
-            "z-index": 3201,
+            "z-index": 1201,
             right: isArabic
               ? `${buttonMenuArabic()}px`
               : props.right && !isArabic
@@ -231,9 +232,10 @@ export const BubbleButton = (props: Props) => {
             bottom: "27px",
             display:
               isMainPage ||
-              pathName().includes("/dashboard") ||
-              pathName().includes("authorization") ||
-              pathName().includes("programs")
+              pathName().includes("login") ||
+              pathName().includes("programs") ||
+              pathName().includes("assessment") ||
+              localStorage.getItem("role") !== "student"
                 ? "none"
                 : "",
             padding: "10px",
