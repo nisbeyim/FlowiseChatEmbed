@@ -227,49 +227,36 @@ export const Bot = (props: BotProps & { class?: string }) => {
     if (isChatFlowAvailableToStream())
       body.socketIOClientId = socketIOClientId();
 
-    const result = await sendMessageQuery({
-      chatflowid: props.chatflowid,
-      apiHost: props.apiHost,
-      body,
-    });
+    try {
+      const result = await sendMessageQuery({
+        chatflowid: props.chatflowid,
+        apiHost: props.apiHost,
+        body,
+      });
 
-    if (result.data) {
-      const data = handleVectaraMetadata(result.data);
+      if (result.data) {
+        const { text, sourceDocuments } = result.data; // Adjust to match the new format
 
-      if (typeof data === "object" && data.text && data.sourceDocuments) {
-        if (!isChatFlowAvailableToStream()) {
+        // Update the messages with the bot's response
+        if (text) {
           setMessages((prevMessages) => [
             ...prevMessages,
             {
-              message: data.text,
-              sourceDocuments: data.sourceDocuments,
+              message: text,
+              sourceDocuments: sourceDocuments ?? [], // Optional handling of source documents
               type: "apiMessage",
             },
           ]);
         }
-      } else {
-        if (!isChatFlowAvailableToStream())
-          setMessages((prevMessages) => [
-            ...prevMessages,
-            { message: data, type: "apiMessage" },
-          ]);
       }
-      setLoading(false);
-      setUserInput("");
-      scrollToBottom();
-    }
-    if (result.error) {
-      const error = result.error;
+    } catch (error) {
       console.error(error);
-      const err: any = error;
-      const errorData =
-        typeof err === "string"
-          ? err
-          : err.response.data ||
-            `${err.response.status}: ${err.response.statusText}`;
-      handleError(errorData);
-      return;
+      handleError("Error occurred while sending the message.");
     }
+
+    setLoading(false);
+    setUserInput("");
+    scrollToBottom();
   };
 
   // Auto scroll chat to bottom
