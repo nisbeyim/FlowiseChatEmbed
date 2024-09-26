@@ -161,10 +161,9 @@ export const BubbleButton = (props: Props) => {
             bottom: isArabic ? "20px" : `${defaultBottom}px`,
             display:
               isMainPage ||
-              pathName().includes("login") ||
+              !pathName().includes("feed") ||
               pathName().includes("programs") ||
-              pathName().includes("assessment") ||
-              localStorage.getItem("role") !== "student"
+              pathName().includes("assessment")
                 ? "none"
                 : "",
           }}
