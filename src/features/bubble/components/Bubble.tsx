@@ -177,6 +177,7 @@ export const Bubble = (props: BubbleProps) => {
             closeBot={closeBot}
             isBotOpened={isBotStarted()}
             toggleBot={toggleBot}
+            locale={props.locale}
           />
         </Show>
       </div>
