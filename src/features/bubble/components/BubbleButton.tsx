@@ -99,20 +99,24 @@ export const BubbleButton = (props: Props) => {
   const pathName = useCheckURLChange();
 
   const isMainPage = pathName().split("/").length === 2;
-  const locale = () => props.locale;
 
-  const helperName =
-    locale() === "kk"
-      ? "AI Көмекші"
-      :   locale() === "ru"
-      ? "AI Помощник"
-      :   locale() === "ar"
-      ? "AI مساعد"
-      :   locale() === "en"
-      ? "AI Assistant"
-      :   locale() === "ko"
-      ? "AI 보조"
-      : "AI Assistant";
+  const locale = () => props.locale;
+  const [helperName, setHelperName] = createSignal('AI Assistant')
+
+
+  createEffect(() => {
+    setHelperName( locale() === "kk"
+        ? "AI Көмекші"
+        :   locale() === "ru"
+            ? "AI Помощник"
+            :   locale() === "ar"
+                ? "AI مساعد"
+                :   locale() === "en"
+                    ? "AI Assistant"
+                    :   locale() === "ko"
+                        ? "AI 보조"
+                        : "AI Assistant");
+  } )
 
   const isArabic =   locale() === "ar";
   const isKorean =   locale() === "ko";
@@ -397,7 +401,7 @@ export const BubbleButton = (props: Props) => {
                 "margin-left": isArabic ? "11px" : isKorean ? "15px" : "3px",
               }}
             >
-              {helperName}
+              {helperName()}
             </span>
           </div>
         </div>

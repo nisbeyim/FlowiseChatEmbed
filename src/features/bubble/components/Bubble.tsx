@@ -56,7 +56,7 @@ function useVisualViewportWidth() {
 }
 
 export const Bubble = (props: BubbleProps) => {
-  const [bubbleProps] = splitProps(props, ["theme"]);
+  const [bubbleProps] = splitProps(props, ["theme", "locale"]);
 
   let botRef: HTMLElement | null;
 
@@ -177,7 +177,7 @@ export const Bubble = (props: BubbleProps) => {
             closeBot={closeBot}
             isBotOpened={isBotStarted()}
             toggleBot={toggleBot}
-            locale={props.locale}
+            locale={bubbleProps.locale}
           />
         </Show>
       </div>
