@@ -38,6 +38,7 @@ export type ChatWindowTheme = {
     botMessage?: BotMessageTheme
     textInput?: TextInputTheme
     poweredByTextColor?: string
+    helperMessage?: string
 }
 
 export type ButtonTheme = {

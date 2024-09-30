@@ -176,7 +176,7 @@ export const Bubble = (props: BubbleProps) => {
             closeBot={closeBot}
             isBotOpened={isBotStarted()}
             toggleBot={toggleBot}
-            locale={props.locale}
+            helperMessage={bubbleProps.theme?.chatWindow?.helperMessage}
           />
         </Show>
       </div>
