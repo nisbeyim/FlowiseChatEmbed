@@ -42,6 +42,7 @@ export type BotProps = {
   closeBot?: () => void;
   isBotOpened?: boolean;
   toggleBot?: () => void;
+  locale?: string;
 };
 
 const defaultWelcomeMessage = "Hi there! How can I help?";
