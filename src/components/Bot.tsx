@@ -1,23 +1,14 @@
-import { createSignal, createEffect, For, onMount, onCleanup } from "solid-js";
-import {
-  sendMessageQuery,
-  isStreamAvailableQuery,
-  IncomingInput,
-} from "@/queries/sendMessageQuery";
-import { TextInput } from "./inputs/textInput";
-import { GuestBubble } from "./bubbles/GuestBubble";
-import { BotBubble } from "./bubbles/BotBubble";
-import { LoadingBubble } from "./bubbles/LoadingBubble";
-import { SourceBubble } from "./bubbles/SourceBubble";
-import {
-  BotMessageTheme,
-  TextInputTheme,
-  UserMessageTheme,
-} from "@/features/bubble/types";
-import { Badge } from "./Badge";
+import {createEffect, createSignal, For, onCleanup, onMount} from "solid-js";
+import {IncomingInput, isStreamAvailableQuery, sendMessageQuery,} from "@/queries/sendMessageQuery";
+import {TextInput} from "./inputs/textInput";
+import {GuestBubble} from "./bubbles/GuestBubble";
+import {BotBubble} from "./bubbles/BotBubble";
+import {LoadingBubble} from "./bubbles/LoadingBubble";
+import {SourceBubble} from "./bubbles/SourceBubble";
+import {BotMessageTheme, TextInputTheme, UserMessageTheme,} from "@/features/bubble/types";
 import socketIOClient from "socket.io-client";
-import { Popup } from "@/features/popup";
-import { useCheckURLChange } from "@/features/bubble/components/BubbleButton";
+import {Popup} from "@/features/popup";
+import {useCheckURLChange} from "@/features/bubble/components/BubbleButton";
 // import { helperName } from "./localeNames";
 
 type messageType = "apiMessage" | "userMessage" | "usermessagewaiting";
@@ -419,7 +410,7 @@ export const Bot = (props: BotProps & { class?: string }) => {
             >
               <div class="flex gap-4 ">
                 <div class=" text-lg text-[#364954] leading-[25.2px] font-bold">
-                  {helperName()}
+                  {props.helperMessage}
                 </div>
               </div>
               <span class="text-[#678AA1] text-[10px] font-normal leading-[14px]">

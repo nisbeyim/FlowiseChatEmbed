@@ -386,7 +386,7 @@ export const BubbleButton = (props: Props) => {
                 "margin-left": isArabic ? "11px" : isKorean ? "15px" : "3px",
               }}
             >
-              {helperName()}
+              {props.helperMessage}
             </span>
           </div>
         </div>
