@@ -363,7 +363,7 @@ export const Bot = (props: BotProps & { class?: string }) => {
   };
 
   const pathName = useCheckURLChange();
-  const locale = pathName().split("/")[1];
+  const locale = props.locale ? props.locale : pathName().split("/")[1];
 
   const helperName =
     locale === "kk"
