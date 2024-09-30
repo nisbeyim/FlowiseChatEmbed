@@ -115,7 +115,6 @@ export const Bubble = (props: BubbleProps) => {
         toggleBot={toggleBot}
         closeBot={closeBot}
         isBotOpened={isBotOpened()}
-        locale={props.locale}
       />
       {/* "calc(100% - 59px)", */}
       <div

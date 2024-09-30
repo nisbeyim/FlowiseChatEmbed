@@ -6,7 +6,6 @@ type Props = ButtonTheme & {
   isBotOpened: boolean;
   toggleBot: () => void;
   closeBot: () => void;
-  locale?: string;
 };
 
 const defaultButtonColor = "#3B81F6";
@@ -99,7 +98,7 @@ export const BubbleButton = (props: Props) => {
   const pathName = useCheckURLChange();
 
   const isMainPage = pathName().split("/").length === 2;
-  const locale = props.locale ? props.locale : pathName().split("/")[1];
+  const locale = pathName().split("/")[1];
 
   const helperName =
     locale === "kk"
@@ -160,7 +159,13 @@ export const BubbleButton = (props: Props) => {
               ? `${props.right.toString()}px`
               : `${defaultRight}px`,
             bottom: isArabic ? "20px" : `${defaultBottom}px`,
-
+            display:
+              isMainPage ||
+              !pathName().includes("feed") ||
+              pathName().includes("programs") ||
+              pathName().includes("assessment")
+                ? "none"
+                : "",
           }}
         >
           <Show when={props.customIconSrc}>
