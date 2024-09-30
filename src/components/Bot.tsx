@@ -402,21 +402,21 @@ export const Bot = (props: BotProps & { class?: string }) => {
             ref={chatContainer}
             class="overflow-y-scroll min-w-full w-full min-h-full relative scrollable-container chatbot-chat-view scroll-smooth"
           >
-            <div
-              class="w-full flex justify-between items-center bg-[#FFF] h-[38px] md:h-[59px] px-3 mb-4 fixed z-[20]"
-              style={{
-                "border-radius": isLargeSize ? "16px 16px 0px 0px" : "0",
-              }}
-            >
-              <div class="flex gap-4 ">
-                <div class=" text-lg text-[#364954] leading-[25.2px] font-bold">
-                  {props.helperMessage}
-                </div>
-              </div>
-              <span class="text-[#678AA1] text-[10px] font-normal leading-[14px]">
-                Powered by Beyim NIS
-              </span>
-            </div>
+            {/*<div*/}
+            {/*  class="w-full flex justify-between items-center bg-[#FFF] h-[38px] md:h-[59px] px-3 mb-4 fixed z-[20]"*/}
+            {/*  style={{*/}
+            {/*    "border-radius": isLargeSize ? "16px 16px 0px 0px" : "0",*/}
+            {/*  }}*/}
+            {/*>*/}
+            {/*  <div class="flex gap-4 ">*/}
+            {/*    <div class=" text-lg text-[#364954] leading-[25.2px] font-bold">*/}
+            {/*      {props.helperMessage}*/}
+            {/*    </div>*/}
+            {/*  </div>*/}
+            {/*  <span class="text-[#678AA1] text-[10px] font-normal leading-[14px]">*/}
+            {/*    Powered by Beyim NIS*/}
+            {/*  </span>*/}
+            {/*</div>*/}
             <div class="px-3 mt-[53px] md:mt-[74px]">
               <For each={[...messages()]}>
                 {(message, index) => {
