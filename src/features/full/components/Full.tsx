@@ -52,7 +52,10 @@ export const Full = (
             fontSize={props.theme?.chatWindow?.fontSize}
             chatflowid={props.chatflowid}
             chatflowConfig={props.chatflowConfig}
-            apiHost={props.apiHost} />
+            apiHost={props.apiHost}
+            helperMessage={props.theme?.chatWindow?.helperMessage}
+          />
+
         </div>
       </Show>
     </>

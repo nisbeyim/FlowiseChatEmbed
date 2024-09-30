@@ -6,6 +6,7 @@ type Props = ButtonTheme & {
   isBotOpened: boolean;
   toggleBot: () => void;
   closeBot: () => void;
+  helperMessage?: string;
 };
 
 const defaultButtonColor = "#3B81F6";
@@ -100,18 +101,7 @@ export const BubbleButton = (props: Props) => {
   const isMainPage = pathName().split("/").length === 2;
   const locale = pathName().split("/")[1];
 
-  const helperName =
-    locale === "kk"
-      ? "AI Көмекші"
-      : locale === "ru"
-      ? "AI Помощник"
-      : locale === "ar"
-      ? "AI مساعد"
-      : locale === "en"
-      ? "AI Assistant"
-      : locale === "ko"
-      ? "AI 보조"
-      : "AI Assistant";
+  const [helperName, setHelperName] = createSignal<string>(props.helperMessage ?? 'No message')
 
   const isArabic = locale === "ar";
   const isKorean = locale === "ko";
@@ -396,7 +386,7 @@ export const BubbleButton = (props: Props) => {
                 "margin-left": isArabic ? "11px" : isKorean ? "15px" : "3px",
               }}
             >
-              {helperName}
+              {helperName()}
             </span>
           </div>
         </div>
