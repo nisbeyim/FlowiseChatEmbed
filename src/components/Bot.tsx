@@ -363,25 +363,20 @@ export const Bot = (props: BotProps & { class?: string }) => {
   };
 
   const pathName = useCheckURLChange();
-
   const locale = () => props.locale;
-  const [helperName, setHelperName] = createSignal('AI Assistant')
 
-
-  createEffect(() => {
-    setHelperName( locale() === "kk"
-        ? "AI Көмекші"
-        :   locale() === "ru"
-            ? "AI Помощник"
-            :   locale() === "ar"
-                ? "AI مساعد"
-                :   locale() === "en"
-                    ? "AI Assistant"
-                    :   locale() === "ko"
-                        ? "AI 보조"
-                        : "AI Assistant");
-  } )
-
+  const helperName =
+      locale() === "kk"
+      ? "AI Көмекші"
+      :   locale() === "ru"
+      ? "AI Помощник"
+      :   locale() === "ar"
+      ? "AI مساعد"
+      :   locale() === "en"
+      ? "AI Assistant"
+      :   locale() === "ko"
+      ? "AI 보조"
+      : "AI Assistant";
 
   const [windowHeight, setWindowHeight] = createSignal(window.innerHeight);
   const [windowWidth, setWindowWidth] = createSignal(window.innerWidth);
@@ -435,7 +430,7 @@ export const Bot = (props: BotProps & { class?: string }) => {
             >
               <div class="flex gap-4 ">
                 <div class=" text-lg text-[#364954] leading-[25.2px] font-bold">
-                  {helperName()}
+                  {helperName}
                 </div>
               </div>
               <span class="text-[#678AA1] text-[10px] font-normal leading-[14px]">
