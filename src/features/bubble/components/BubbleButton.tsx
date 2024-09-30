@@ -99,23 +99,23 @@ export const BubbleButton = (props: Props) => {
   const pathName = useCheckURLChange();
 
   const isMainPage = pathName().split("/").length === 2;
-  const locale = () => props.locale;
+  const locale = props.locale ? props.locale : pathName().split("/")[1];
 
   const helperName =
-    locale() === "kk"
+    locale === "kk"
       ? "AI Көмекші"
-      :   locale() === "ru"
+      : locale === "ru"
       ? "AI Помощник"
-      :   locale() === "ar"
+      : locale === "ar"
       ? "AI مساعد"
-      :   locale() === "en"
+      : locale === "en"
       ? "AI Assistant"
-      :   locale() === "ko"
+      : locale === "ko"
       ? "AI 보조"
       : "AI Assistant";
 
-  const isArabic =   locale() === "ar";
-  const isKorean =   locale() === "ko";
+  const isArabic = locale === "ar";
+  const isKorean = locale === "ko";
 
   const buttonMenuArabic = useVisualViewportWidthArabic();
 

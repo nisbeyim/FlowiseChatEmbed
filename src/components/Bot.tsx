@@ -363,18 +363,18 @@ export const Bot = (props: BotProps & { class?: string }) => {
   };
 
   const pathName = useCheckURLChange();
-  const locale = () => props.locale;
+  const locale = props.locale ? props.locale : pathName().split("/")[1];
 
   const helperName =
-      locale() === "kk"
+    locale === "kk"
       ? "AI Көмекші"
-      :   locale() === "ru"
+      : locale === "ru"
       ? "AI Помощник"
-      :   locale() === "ar"
+      : locale === "ar"
       ? "AI مساعد"
-      :   locale() === "en"
+      : locale === "en"
       ? "AI Assistant"
-      :   locale() === "ko"
+      : locale === "ko"
       ? "AI 보조"
       : "AI Assistant";
 
