@@ -159,13 +159,7 @@ export const BubbleButton = (props: Props) => {
               ? `${props.right.toString()}px`
               : `${defaultRight}px`,
             bottom: isArabic ? "20px" : `${defaultBottom}px`,
-            display:
-              isMainPage ||
-              !pathName().includes("feed") ||
-              pathName().includes("programs") ||
-              pathName().includes("assessment")
-                ? "none"
-                : "",
+
           }}
         >
           <Show when={props.customIconSrc}>
