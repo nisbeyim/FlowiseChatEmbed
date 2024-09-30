@@ -83,8 +83,8 @@ export const Bubble = (props: BubbleProps) => {
   const toggleBot = () => {
     isBotOpened() ? closeBot() : openBot();
   };
-  const locale = localStorage.getItem("i18nextLng") ?? "kk";
-  const isArabic = locale === "ar";
+  const locale = () => props.locale
+  const isArabic =   locale() === "ar";
 
   const [windowHeight, setWindowHeight] = createSignal(window.innerHeight);
   const [windowWidth, setWindowWidth] = createSignal(window.innerWidth);
