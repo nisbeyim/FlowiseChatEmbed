@@ -101,7 +101,9 @@ export const BubbleButton = (props: Props) => {
   const isMainPage = pathName().split("/").length === 2;
   const locale = pathName().split("/")[1];
 
-  const [helperName, setHelperName] = createSignal<string>(props.helperMessage ?? 'No message')
+  const [helperName, setHelperName] = createSignal<string>(
+    props.helperMessage ?? "No message"
+  );
 
   const isArabic = locale === "ar";
   const isKorean = locale === "ko";
@@ -149,7 +151,6 @@ export const BubbleButton = (props: Props) => {
               ? `${props.right.toString()}px`
               : `${defaultRight}px`,
             bottom: isArabic ? "20px" : `${defaultBottom}px`,
-
           }}
         >
           <Show when={props.customIconSrc}>
@@ -227,9 +228,9 @@ export const BubbleButton = (props: Props) => {
         >
           <Show when={props.customIconSrc}>
             <svg
-              width="28"
+              width="29"
               height="28"
-              viewBox="0 0 28 28"
+              viewBox="0 0 29 28"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
               class={
@@ -239,7 +240,7 @@ export const BubbleButton = (props: Props) => {
                   : "scale-100 rotate-0 opacity-100")
               }
             >
-              <g id="Group">
+              {/* <g id="Group">
                 <g id="Group_2">
                   <path
                     id="Path"
@@ -273,6 +274,32 @@ export const BubbleButton = (props: Props) => {
                     stroke-linecap="round"
                     stroke-linejoin="round"
                   />
+                </g>
+              </g> */}
+              <g id="Group">
+                <g id="Group_2">
+                  <path
+                    id="Path"
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M12.0599 22.407L7.8004 24.5152V20.6687C5.25823 18.9315 3.60156 16.1758 3.60156 13.0457C3.60156 7.75017 8.32423 3.5 14.1016 3.5C19.8789 3.5 24.6016 7.75017 24.6016 13.0457C24.6016 18.3412 19.8789 22.5913 14.1016 22.5913C13.4027 22.5913 12.7214 22.526 12.0599 22.407Z"
+                    stroke="#364954"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                  <g id="Ai">
+                    <path
+                      id="Vector"
+                      d="M17.4596 17.4974V10.8202H19.0333V17.4974H17.4596ZM18.2508 9.87249C18.0016 9.87249 17.7871 9.7899 17.6074 9.6247C17.4277 9.45661 17.3379 9.2552 17.3379 9.02045C17.3379 8.78281 17.4277 8.58139 17.6074 8.4162C17.7871 8.24811 18.0016 8.16406 18.2508 8.16406C18.5029 8.16406 18.7174 8.24811 18.8942 8.4162C19.0739 8.58139 19.1637 8.78281 19.1637 9.02045C19.1637 9.2552 19.0739 9.45661 18.8942 9.6247C18.7174 9.7899 18.5029 9.87249 18.2508 9.87249Z"
+                      fill="#364954"
+                    />
+                    <path
+                      id="Vector_2"
+                      d="M9.76639 17.4967H8.04492L11.1792 8.59375H13.1702L16.3089 17.4967H14.5874L12.2095 10.4196H12.1399L9.76639 17.4967ZM9.82291 14.006H14.5178V15.3014H9.82291V14.006Z"
+                      fill="#364954"
+                    />
+                  </g>
                 </g>
               </g>
             </svg>
@@ -314,7 +341,7 @@ export const BubbleButton = (props: Props) => {
             }
           >
             <g id="Messages, Chat/Messages, Chat">
-              <g id="Group">
+              {/* <g id="Group">
                 <g id="Group_2">
                   <path
                     id="Path"
@@ -348,6 +375,32 @@ export const BubbleButton = (props: Props) => {
                     stroke-linejoin="round"
                   />
                 </g>
+              </g> */}
+              <g id="Group">
+                <g id="Group_2">
+                  <path
+                    id="Path"
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M12.0599 22.407L7.8004 24.5152V20.6687C5.25823 18.9315 3.60156 16.1758 3.60156 13.0457C3.60156 7.75017 8.32423 3.5 14.1016 3.5C19.8789 3.5 24.6016 7.75017 24.6016 13.0457C24.6016 18.3412 19.8789 22.5913 14.1016 22.5913C13.4027 22.5913 12.7214 22.526 12.0599 22.407Z"
+                    stroke="#55BBEB"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                  <g id="Ai">
+                    <path
+                      id="Vector"
+                      d="M17.4596 17.4974V10.8202H19.0333V17.4974H17.4596ZM18.2508 9.87249C18.0016 9.87249 17.7871 9.7899 17.6074 9.6247C17.4277 9.45661 17.3379 9.2552 17.3379 9.02045C17.3379 8.78281 17.4277 8.58139 17.6074 8.4162C17.7871 8.24811 18.0016 8.16406 18.2508 8.16406C18.5029 8.16406 18.7174 8.24811 18.8942 8.4162C19.0739 8.58139 19.1637 8.78281 19.1637 9.02045C19.1637 9.2552 19.0739 9.45661 18.8942 9.6247C18.7174 9.7899 18.5029 9.87249 18.2508 9.87249Z"
+                      fill="#55BBEB"
+                    />
+                    <path
+                      id="Vector_2"
+                      d="M9.76639 17.4967H8.04492L11.1792 8.59375H13.1702L16.3089 17.4967H14.5874L12.2095 10.4196H12.1399L9.76639 17.4967ZM9.82291 14.006H14.5178V15.3014H9.82291V14.006Z"
+                      fill="#55BBEB"
+                    />
+                  </g>
+                </g>
               </g>
             </g>
           </svg>
@@ -380,9 +433,9 @@ export const BubbleButton = (props: Props) => {
             </svg> */}
           <div>
             <span
-              class={`text-xs leading-[16.8px] font-medium  absolute top-[29px] left-[-26px] whitespace-nowrap text-center text-[#678AA1]`}
+              class={`text-xs leading-[16.8px] font-medium  absolute top-[29px] left-[-26px] whitespace-nowrap text-center text-[#30404A]`}
               style={{
-                color: props.isBotOpened ? "#36A0D0" : "#678AA1",
+                color: props.isBotOpened ? "#30404A" : "#678AA1",
                 "margin-left": isArabic ? "11px" : isKorean ? "15px" : "3px",
               }}
             >

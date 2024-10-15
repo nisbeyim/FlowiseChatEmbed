@@ -1,20 +1,19 @@
 const locale = localStorage.getItem("i18nextLng");
-export const helperName = 
-    locale === "kk"
-    ? "AI Көмекші"
+export const helperName =
+  locale === "kk"
+    ? "Көмек"
     : locale === "ru"
-    ? "AI Помощник"
+    ? "Помощь"
     : locale === "ar"
-    ? "AI مساعد"
+    ? "مساعدة"
     : locale === "en-US"
-    ? "AI Assistant"
+    ? "Help"
     : locale === "en"
-    ? "AI Assistant"
+    ? "Help"
     : locale === "en-AE"
-    ? "AI Assistant"
+    ? "Help"
     : locale === "ar-AE"
-    ? "AI مساعد"
+    ? "مساعدة"
     : locale === "ko"
-    ? "AI 보조"
-    : "AI Assistant";
-    
+    ? "도움말"
+    : "Help";
