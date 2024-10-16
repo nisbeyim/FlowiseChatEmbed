@@ -451,7 +451,7 @@ export const BubbleButton = (props: Props) => {
             </svg> */}
           <div>
             <span
-              class={`text-xs leading-[16.8px] font-medium  absolute top-[29px] left-[-16px] whitespace-nowrap text-center text-[#30404A]`}
+              class={`text-xs leading-[16.8px] font-normal  absolute top-[29px] left-[-16px] whitespace-nowrap text-center text-[#30404A]`}
               style={{
                 color: props.isBotOpened ? "#55BBEB" : "#30404A",
                 "margin-left": isArabic
