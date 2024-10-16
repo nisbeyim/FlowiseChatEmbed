@@ -452,7 +452,7 @@ export const BubbleButton = (props: Props) => {
             <span
               class={`text-xs leading-[16.8px] font-medium  absolute top-[29px] left-[-26px] whitespace-nowrap text-center text-[#30404A]`}
               style={{
-                color: props.isBotOpened ? "#30404A" : "#678AA1",
+                color: props.isBotOpened ? "#55BBEB" : "#30404A",
                 "margin-left": isArabic ? "11px" : isKorean ? "15px" : "3px",
               }}
             >
