@@ -101,9 +101,27 @@ export const BubbleButton = (props: Props) => {
   const isMainPage = pathName().split("/").length === 2;
   const locale = pathName().split("/")[1];
 
-  const [helperName, setHelperName] = createSignal<string>(
-    props.helperMessage ?? "No message"
-  );
+  // const [helperName, setHelperName] = createSignal<string>(
+  //   props.helperMessage ?? "No message"
+  // );
+  const helperName =
+    locale === "kk"
+      ? "Көмек"
+      : locale === "ru"
+      ? "Помощь"
+      : locale === "ar"
+      ? "مساعدة"
+      : locale === "en-US"
+      ? "Help"
+      : locale === "en"
+      ? "Help"
+      : locale === "en-AE"
+      ? "Help"
+      : locale === "ar-AE"
+      ? "مساعدة"
+      : locale === "ko"
+      ? "도움말"
+      : "Help";
 
   const isArabic = locale === "ar";
   const isKorean = locale === "ko";
@@ -439,7 +457,7 @@ export const BubbleButton = (props: Props) => {
                 "margin-left": isArabic ? "11px" : isKorean ? "15px" : "3px",
               }}
             >
-              {props.helperMessage}
+              {helperName}
             </span>
           </div>
         </div>
