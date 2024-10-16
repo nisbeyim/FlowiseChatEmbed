@@ -456,8 +456,10 @@ export const BubbleButton = (props: Props) => {
                 color: props.isBotOpened ? "#55BBEB" : "#30404A",
                 "margin-left": isArabic
                   ? "12px"
-                  : isKorean || isKazakh
+                  : isKorean
                   ? "10px"
+                  : isKazakh
+                  ? "7px"
                   : "5px",
               }}
             >
