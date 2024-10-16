@@ -60,7 +60,7 @@ function useVisualViewportWidthArabic() {
   function handleResize() {
     setViewPortWidth(
       (3 * (window?.visualViewport?.width || 0)) / 5 +
-        (window?.visualViewport?.width || 0) / 10 || 0 - 7
+        (window?.visualViewport?.width || 0) / 14 || 0 - 7
     );
   }
 
@@ -455,7 +455,7 @@ export const BubbleButton = (props: Props) => {
               style={{
                 color: props.isBotOpened ? "#55BBEB" : "#30404A",
                 "margin-left": isArabic
-                  ? "9px"
+                  ? "11px"
                   : isKorean
                   ? "10px"
                   : isKazakh
