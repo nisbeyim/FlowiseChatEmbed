@@ -1,14 +1,22 @@
-import {createEffect, createSignal, For, onCleanup, onMount} from "solid-js";
-import {IncomingInput, isStreamAvailableQuery, sendMessageQuery,} from "@/queries/sendMessageQuery";
-import {TextInput} from "./inputs/textInput";
-import {GuestBubble} from "./bubbles/GuestBubble";
-import {BotBubble} from "./bubbles/BotBubble";
-import {LoadingBubble} from "./bubbles/LoadingBubble";
-import {SourceBubble} from "./bubbles/SourceBubble";
-import {BotMessageTheme, TextInputTheme, UserMessageTheme,} from "@/features/bubble/types";
+import { createEffect, createSignal, For, onCleanup, onMount } from "solid-js";
+import {
+  IncomingInput,
+  isStreamAvailableQuery,
+  sendMessageQuery,
+} from "@/queries/sendMessageQuery";
+import { TextInput } from "./inputs/textInput";
+import { GuestBubble } from "./bubbles/GuestBubble";
+import { BotBubble } from "./bubbles/BotBubble";
+import { LoadingBubble } from "./bubbles/LoadingBubble";
+import { SourceBubble } from "./bubbles/SourceBubble";
+import {
+  BotMessageTheme,
+  TextInputTheme,
+  UserMessageTheme,
+} from "@/features/bubble/types";
 import socketIOClient from "socket.io-client";
-import {Popup} from "@/features/popup";
-import {useCheckURLChange} from "@/features/bubble/components/BubbleButton";
+import { Popup } from "@/features/popup";
+import { useCheckURLChange } from "@/features/bubble/components/BubbleButton";
 // import { helperName } from "./localeNames";
 
 type messageType = "apiMessage" | "userMessage" | "usermessagewaiting";
@@ -24,7 +32,6 @@ export type BotProps = {
   apiHost?: string;
   chatflowConfig?: Record<string, unknown>;
   welcomeMessage?: string;
-  helperMessage?: string;
   botMessage?: BotMessageTheme;
   userMessage?: UserMessageTheme;
   textInput?: TextInputTheme;
@@ -355,8 +362,6 @@ export const Bot = (props: BotProps & { class?: string }) => {
 
   const pathName = useCheckURLChange();
   const locale = pathName().split("/")[1];
-
-  const [helperName, setHelperName] = createSignal<string>(props.helperMessage ?? 'No message')
 
   const [windowHeight, setWindowHeight] = createSignal(window.innerHeight);
   const [windowWidth, setWindowWidth] = createSignal(window.innerWidth);

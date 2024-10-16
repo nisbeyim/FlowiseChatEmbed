@@ -115,7 +115,6 @@ export const Bubble = (props: BubbleProps) => {
         toggleBot={toggleBot}
         closeBot={closeBot}
         isBotOpened={isBotOpened()}
-        helperMessage={bubbleProps.theme?.chatWindow?.helperMessage}
       />
       {/* "calc(100% - 59px)", */}
       <div
@@ -177,7 +176,6 @@ export const Bubble = (props: BubbleProps) => {
             closeBot={closeBot}
             isBotOpened={isBotStarted()}
             toggleBot={toggleBot}
-            helperMessage={bubbleProps.theme?.chatWindow?.helperMessage}
           />
         </Show>
       </div>

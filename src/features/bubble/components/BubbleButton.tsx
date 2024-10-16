@@ -6,7 +6,6 @@ type Props = ButtonTheme & {
   isBotOpened: boolean;
   toggleBot: () => void;
   closeBot: () => void;
-  helperMessage?: string;
 };
 
 const defaultButtonColor = "#3B81F6";
