@@ -105,22 +105,22 @@ export const BubbleButton = (props: Props) => {
   // );
   const helperName =
     locale === "kk"
-      ? "Көмек"
+      ? "Көмекші"
       : locale === "ru"
-      ? "Помощь"
+      ? "Помощник"
       : locale === "ar"
-      ? "مساعدة"
+      ? "مساعد"
       : locale === "en-US"
-      ? "Help"
+      ? "Assistant"
       : locale === "en"
-      ? "Help"
+      ? "Assistant"
       : locale === "en-AE"
-      ? "Help"
+      ? "Assistant"
       : locale === "ar-AE"
-      ? "مساعدة"
+      ? "مساعد"
       : locale === "ko"
-      ? "도움말"
-      : "Help";
+      ? "보조"
+      : "Assistant";
 
   const isArabic = locale === "ar";
   const isKorean = locale === "ko";
@@ -457,10 +457,10 @@ export const BubbleButton = (props: Props) => {
                 "margin-left": isArabic
                   ? "11px"
                   : isKorean
-                  ? "10px"
+                  ? "12px"
                   : isKazakh
-                  ? "7px"
-                  : "4px",
+                  ? "3px"
+                  : "1px",
               }}
             >
               {helperName}
