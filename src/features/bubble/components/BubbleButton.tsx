@@ -124,6 +124,7 @@ export const BubbleButton = (props: Props) => {
 
   const isArabic = locale === "ar";
   const isKorean = locale === "ko";
+  const isKazakh = locale === "kk";
 
   const buttonMenuArabic = useVisualViewportWidthArabic();
 
@@ -453,7 +454,11 @@ export const BubbleButton = (props: Props) => {
               class={`text-xs leading-[16.8px] font-medium  absolute top-[29px] left-[-16px] whitespace-nowrap text-center text-[#30404A]`}
               style={{
                 color: props.isBotOpened ? "#55BBEB" : "#30404A",
-                "margin-left": isArabic ? "12px" : isKorean ? "10px" : "5px",
+                "margin-left": isArabic
+                  ? "12px"
+                  : isKorean || isKazakh
+                  ? "10px"
+                  : "5px",
               }}
             >
               {helperName}
