@@ -35,7 +35,7 @@ function useVisualViewportWidthEn() {
 
   function handleResize() {
     setViewPortWidth(
-      (window?.visualViewport?.width || 0) / 4 +
+      (window?.visualViewport?.width || 0) / 5 +
         (window?.visualViewport?.width || 0) / 14 || 0
     );
   }
@@ -59,7 +59,7 @@ function useVisualViewportWidthArabic() {
 
   function handleResize() {
     setViewPortWidth(
-      (2 * (window?.visualViewport?.width || 0)) / 4 +
+      (2 * (window?.visualViewport?.width || 0)) / 5 +
         (window?.visualViewport?.width || 0) / 10 || 0 - 7
     );
   }
@@ -450,10 +450,10 @@ export const BubbleButton = (props: Props) => {
             </svg> */}
           <div>
             <span
-              class={`text-xs leading-[16.8px] font-medium  absolute top-[29px] left-[-26px] whitespace-nowrap text-center text-[#30404A]`}
+              class={`text-xs leading-[16.8px] font-medium  absolute top-[29px] left-[-16px] whitespace-nowrap text-center text-[#30404A]`}
               style={{
                 color: props.isBotOpened ? "#55BBEB" : "#30404A",
-                "margin-left": isArabic ? "11px" : isKorean ? "15px" : "3px",
+                "margin-left": isArabic ? "12px" : isKorean ? "10px" : "5px",
               }}
             >
               {helperName}
