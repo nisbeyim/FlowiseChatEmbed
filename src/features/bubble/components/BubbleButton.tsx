@@ -462,8 +462,8 @@ export const BubbleButton = (props: Props) => {
                   : isEnglish
                   ? "9px"
                   : isKazakh
-                  ? "9px"
-                  : "3px",
+                  ? "7px"
+                  : "1px",
               }}
             >
               {helperName}
