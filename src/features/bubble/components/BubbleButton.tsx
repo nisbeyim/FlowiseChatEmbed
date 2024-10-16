@@ -458,12 +458,12 @@ export const BubbleButton = (props: Props) => {
                 "margin-left": isArabic
                   ? "16px"
                   : isKorean
-                  ? "21px"
+                  ? "20px"
                   : isEnglish
-                  ? "10px"
+                  ? "9px"
                   : isKazakh
-                  ? "11px"
-                  : "4px",
+                  ? "9px"
+                  : "3px",
               }}
             >
               {helperName}
