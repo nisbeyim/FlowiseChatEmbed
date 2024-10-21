@@ -170,6 +170,7 @@ export const BubbleButton = (props: Props) => {
               ? `${props.right.toString()}px`
               : `${defaultRight}px`,
             bottom: isArabic ? "20px" : `${defaultBottom}px`,
+            display: !pathName().includes("feed") ? "none" : "",
           }}
         >
           <Show when={props.customIconSrc}>
