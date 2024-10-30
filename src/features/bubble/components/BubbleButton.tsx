@@ -152,6 +152,7 @@ export const BubbleButton = (props: Props) => {
     <>
       {isLargeSize() ? (
         <button
+
           part="button"
           onClick={() => props.toggleBot()}
           class={`fixed rounded-full  transition-transform duration-200 flex justify-center items-center animate-fade-in w-[60px] h-[60px]`}
