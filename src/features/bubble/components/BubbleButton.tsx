@@ -155,7 +155,7 @@ export const BubbleButton = (props: Props) => {
 
           part="button"
           onClick={() => props.toggleBot()}
-          class={`fixed rounded-full  transition-transform duration-200 flex justify-center items-center animate-fade-in w-[60px] h-[60px]`}
+          class={`fixed rounded-full  transition-transform duration-200 flex justify-center items-center animate-fade-in w-=1 h-[60px]`}
           style={{
             "background-color": props.backgroundColor ?? defaultButtonColor,
             "z-index": 1201,
@@ -225,16 +225,13 @@ export const BubbleButton = (props: Props) => {
       ) : (
         // <button part="button" onClick={() => props.toggleBot()}>
         <div
-          class={`fixed  rounded-full  transition-transform duration-200 flex justify-center items-center animate-fade-in w-[25px] h-[25px] cursor-pointer`}
+          class={`fixed  rounded-full  transition-transform duration-200 flex justify-center items-center animate-fade-in h-[25px] cursor-pointer`}
           style={{
             // "background-color": props.isBotOpened ? "#55BBEB" : "#577487",
             "z-index": 1201,
-            right: isArabic
-              ? `${buttonMenuArabic()}px`
-              : props.right && !isArabic
-              ? `${windowWidth()}px`
-              : `${windowWidth()}px`,
+            right: "50%",
             bottom: "27px",
+            transform: "translate(50%, 0)",
             display:
               isMainPage ||
               pathName().includes("login") ||
@@ -454,7 +451,7 @@ export const BubbleButton = (props: Props) => {
             </svg> */}
           <div>
             <span
-              class={`text-xs leading-[16.8px] font-normal  absolute top-[29px] left-[-20px] whitespace-nowrap text-center text-[#30404A]`}
+              class={`font-medium text-xs  absolute top-[29px] left-[-20px] whitespace-nowrap text-center text-[#30404A]`}
               style={{
                 color: props.isBotOpened ? "#55BBEB" : "#30404A",
                 "margin-left": isArabic
